@@ -1,0 +1,166 @@
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Poppins", sans-serif;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.hint {
+  position: fixed;
+  top: var(--hintY, 72%);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  padding: 0.5rem 1.1rem;
+  border-radius: 2rem;
+  background: rgba(52, 77, 52, 0.55);
+  color: var(--c-cream);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  animation: hintFade 2.6s ease-in-out infinite;
+}
+
+.hint.steady {
+  animation: none;
+  opacity: 1;
+}
+
+.hint.hide {
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+  transition: opacity 0.4s ease;
+}
+
+.replay {
+  position: fixed;
+  top: var(--hintY, 72%);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--c-cream);
+  background: rgba(52, 77, 52, 0.55);
+  border: 0;
+  padding: 0.55rem 1.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.2s ease;
+}
+.replay.show {
+  opacity: 1;
+  pointer-events: auto;
+  /* fade in to the pulse's low point, then pulse like the candle hint */
+  animation: replayIn 0.5s ease, hintFade 2.6s ease-in-out 0.5s infinite;
+}
+
+@keyframes replayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+.replay:hover {
+  transform: translateX(-50%) translateY(-1px);
+}
+.replay:focus-visible {
+  outline: 2px solid var(--c-forest);
+  outline-offset: 2px;
+}
+
+.ear-hint {
+  position: absolute;
+  top: -3.9rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 6;
+  padding: 0.4rem 0.9rem;
+  border-radius: 2rem;
+  background: rgba(52, 77, 52, 0.55);
+  color: var(--c-cream);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.ear-hint.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: earSway 2.8s ease-in-out 0.6s infinite;
+}
+
+@keyframes earSway {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(-2.2deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(2.2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ear-hint.show {
+    animation: none;
+  }
+}
+
+.content {
+  position: fixed;
+  top: var(--msgY, 30%);
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+  z-index: 6;
+}
+
+.content__line {
+  font-family: "Shantell Sans", cursive;
+  font-weight: 700;
+  font-size: clamp(2.3rem, 9.5vw, 4rem);
+  line-height: 1.15;
+  text-wrap: balance;
+  color: #3d3226;
+  text-shadow: 0 1px 0 rgba(255, 250, 240, 0.4);
+  opacity: 0;
+  padding: 0 1.4rem;
+}
+
+@keyframes hintFade {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hint,
+  .replay.show {
+    animation: none;
+  }
+}
