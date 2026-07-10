@@ -1,0 +1,21 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    overflow: hidden;
+    color: white;
+
+}
+
+svg {
+    width: 100px;
+    transform: scale(0.5)
+}
+
+img {
+    transform: scale(0.5);
+    color: aqua;
+}
