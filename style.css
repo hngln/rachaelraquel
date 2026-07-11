@@ -308,7 +308,14 @@ body {
   z-index: -1;
   height: 6rem;
   width: 5rem;
+  /* fully hidden until she unlocks them; the tucked tips used to poke past
+     the hair silhouette */
+  opacity: 0;
   transition: 0.5s ease-in-out;
+}
+
+.komi-head.ears .komi-cat-ear {
+  opacity: 1;
 }
 
 .komi-cat-ear::before {
@@ -1098,7 +1105,7 @@ body {
   font-family: "Caveat", cursive;
   font-weight: 600;
   font-size: clamp(1.15rem, 4.5vw, 1.7rem);
-  color: rgba(244, 236, 218, 0.6);
+  color: rgba(244, 236, 218, 0.85);
   white-space: nowrap;
   pointer-events: none;
 }
