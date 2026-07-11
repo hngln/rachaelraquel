@@ -633,10 +633,13 @@
       }
     }
 
+    let replayCall = null;
     function offerReplay() {
-      gsap.delayedCall(1.2, () =>
-        document.getElementById("replay").classList.add("show"),
-      );
+      if (replayCall) replayCall.kill();
+      replayCall = gsap.delayedCall(1.2, () => {
+        replayCall = null;
+        document.getElementById("replay").classList.add("show");
+      });
     }
 
     function markEarsFound() {
@@ -1062,8 +1065,14 @@
         scaleY: 1,
         transformOrigin: "bottom center",
       });
-      hint.classList.remove("hide", "steady");
+      hint.classList.remove("steady");
       hint.textContent = "tap the candle to light it";
+      // 500ms matches the replay fade-out in style.css so the two never overlap
+      setTimeout(() => hint.classList.remove("hide"), 500);
+      if (replayCall) {
+        replayCall.kill();
+        replayCall = null;
+      }
       replay.classList.remove("show");
       // after the first full run the last message and the found ears stay
       if (!hasPlayedMessages) {
