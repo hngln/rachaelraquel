@@ -1107,6 +1107,7 @@ body {
   font-size: clamp(1.15rem, 4.5vw, 1.7rem);
   color: rgba(244, 236, 218, 0.85);
   white-space: nowrap;
+  padding: 0 0.35em;
   pointer-events: none;
 }
 
