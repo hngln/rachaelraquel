@@ -64,9 +64,6 @@ body {
   z-index: 4;
   transform-origin: 50% 88%;
   animation: komiBreathe 4.6s ease-in-out infinite;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 @keyframes komiBreathe {
@@ -600,9 +597,7 @@ body {
   height: 12rem;
   width: 13rem;
   margin-bottom: 5rem;
-  left: 1rem;
-  display: flex;
-  justify-content: center;
+  left: 1.3125rem;
 }
 
 .komi-hair-extension {
@@ -897,22 +892,17 @@ body {
   left: calc(50% - 6rem);
   height: 6rem;
   width: 12rem;
-  display: flex;
-  justify-content: center;
 }
 
 .komi-panel {
   top: 2rem;
-  /* the head sits 1rem right in the komi box; match it so the body lines up */
-  left: calc(50% + 1rem);
+  left: 50%;
   width: clamp(20rem, 50vw, 30rem);
   height: 15rem;
   transform: translateX(-50%);
   background-color: var(--komi-panel);
   overflow: hidden;
   z-index: 1;
-  display: flex;
-  justify-content: center;
 }
 
 .komi-head.ears {
@@ -1108,11 +1098,10 @@ body {
   z-index: 8;
   font-family: "Caveat", cursive;
   font-weight: 600;
-  font-size: clamp(1rem, 3.8vw, 1.5rem);
+  font-size: clamp(1.15rem, 4.5vw, 1.7rem);
   color: rgba(244, 236, 218, 0.6);
   white-space: nowrap;
   pointer-events: none;
-  padding: 0 12px;
 }
 
 .table-front {
@@ -1246,7 +1235,9 @@ body {
 /* unwrapping: the ribbon loosens then slips off, then the lid gets pried up */
 .gifts .box .gift-ribbon,
 .gifts .box .gift-lid {
-  transition: transform 0.25s ease, opacity 0.3s ease;
+  transition:
+    transform 0.25s ease,
+    opacity 0.3s ease;
   transform-box: fill-box;
   transform-origin: 50% 50%;
 }
@@ -1407,272 +1398,267 @@ body.lit .room-glow {
 
 /* ===== cake ===== */
 :root {
-    --plate-background: #f4efe2;
-    --plate-base-box-shadow: #9a927f;
-    --cake-base-background: #6b4128;
-    --cake-topping: #3c2415;
+  --plate-background: #f4efe2;
+  --plate-base-box-shadow: #9a927f;
+  --cake-base-background: #6b4128;
+  --cake-topping: #3c2415;
 }
 
 *,
 *:before,
 *:after {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 .svg {
-    position: absolute;
-    width: 0;
-    height: 0;
+  position: absolute;
+  width: 0;
+  height: 0;
 }
 
 .wrapper,
 .plate,
 .candle-container {
-    display: grid;
-    place-items: center;
+  display: grid;
+  place-items: center;
 }
 
-
 .wrapper {
-    position: relative;
-    transform: scale(0.65);
-    z-index: 10;
-    bottom: 2.2rem;
-    cursor: pointer;
-    margin-top: 1.5rem;
+  position: relative;
+  transform: scale(0.65);
+  z-index: 10;
+  bottom: 2.2rem;
+  cursor: pointer;
 }
 
 .smoke {
-    position: absolute;
-    top: -6px;
-    left: 50%;
-    width: 14px;
-    height: 14px;
-    margin-left: -7px;
-    border-radius: 50%;
-    background: rgba(120, 120, 120, 0.5);
-    filter: blur(3px);
-    pointer-events: none;
-    z-index: 100;
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: rgba(120, 120, 120, 0.5);
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 100;
 }
 
-
 .plate {
-    position: relative;
-    width: 250px;
-    height: 75px;
-    background: var(--plate-background);
-    margin-top: 0;
-    border-radius: 50%;
-    box-shadow: 0px 3px 5px 0px var(--plate-base-box-shadow);
+  position: relative;
+  width: 250px;
+  height: 75px;
+  background: var(--plate-background);
+  margin-top: 0;
+  border-radius: 50%;
+  box-shadow: 0px 3px 5px 0px var(--plate-base-box-shadow);
 }
 
 .cake-wrap {
-    position: absolute;
-    bottom: 50%;
+  position: absolute;
+  bottom: 50%;
 }
 
 .cake-base {
-    position: relative;
-    width: 200px;
-    height: 50px;
-    background: var(--cake-base-background);
+  position: relative;
+  width: 200px;
+  height: 50px;
+  background: var(--cake-base-background);
 }
 
 .cake-base .base-front {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: inherit;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
 }
 
 .cake-base .base-front:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    height: 55px;
-    transform: translatey(-50%);
-    background: inherit;
-    border-radius: 50%;
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 55px;
+  transform: translatey(-50%);
+  background: inherit;
+  border-radius: 50%;
 }
 
 .cake-base .base-top {
-    position: absolute;
-    width: 100%;
-    height: 65px;
-    top: 0;
-    transform: translatey(-50%);
-    border-radius: 50%;
-    background: inherit;
+  position: absolute;
+  width: 100%;
+  height: 65px;
+  top: 0;
+  transform: translatey(-50%);
+  border-radius: 50%;
+  background: inherit;
 }
 
 .cake-base .base-top:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    clip-path: polygon(0 0, 0% 50%, 100% 50%, 100% 0);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(0 0, 0% 50%, 100% 50%, 100% 0);
 }
 
 .cake-base .base-top:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    border-bottom-color: black;
-    clip-path: polygon(0 50%, 60% 50%, 60% 101%, 0 101%);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-bottom-color: black;
+  clip-path: polygon(0 50%, 60% 50%, 60% 101%, 0 101%);
 }
 
 .cake-topping {
-    position: absolute;
-    bottom: 0%;
-    width: 200px;
-    height: 100px;
-    z-index: 99;
+  position: absolute;
+  bottom: 0%;
+  width: 200px;
+  height: 100px;
+  z-index: 99;
 }
 
 .cake-topping .topping-front {
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, var(--cake-topping) 40%, transparent);
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--cake-topping) 40%, transparent);
 }
 
 .cake-topping .topping-front .top-layer {
-    height: 30%;
-    background: var(--cake-topping);
+  height: 30%;
+  background: var(--cake-topping);
 }
 
 .cake-topping .topping-front .bottom-layer {
-    position: relative;
-    height: 70%;
-    background: var(--cake-topping);
-    clip-path: url('#my-clip-path');
+  position: relative;
+  height: 70%;
+  background: var(--cake-topping);
+  clip-path: url("#my-clip-path");
 }
 
 .cake-topping .topping-top {
-    background: var(--cake-topping);
-    position: absolute;
-    width: 100%;
-    height: 65px;
-    top: 0;
-    transform: translatey(-50%);
-    border-radius: 50%;
-    z-index: 9;
+  background: var(--cake-topping);
+  position: absolute;
+  width: 100%;
+  height: 65px;
+  top: 0;
+  transform: translatey(-50%);
+  border-radius: 50%;
+  z-index: 9;
 }
 
 .cake-topping .topping-top:before {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    clip-path: polygon(0 0, 0% 50%, 100% 50%, 100% 0);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(0 0, 0% 50%, 100% 50%, 100% 0);
 }
 
 .cake-topping .topping-top:after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    box-shadow: inset 0 -1px 1px 2px rgba(26, 15, 9, 0.45);
-    clip-path: polygon(10% 50%, 70% 50%, 70% 101%, 10% 101%);
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 -1px 1px 2px rgba(26, 15, 9, 0.45);
+  clip-path: polygon(10% 50%, 70% 50%, 70% 101%, 10% 101%);
 }
 
 .candle-container {
-    width: 200px;
-    position: absolute;
-    bottom: 60%;
-    z-index: 9999;
-    opacity: 0;
+  width: 200px;
+  position: absolute;
+  bottom: 60%;
+  z-index: 9999;
+  opacity: 0;
 }
 
 .candle-container .candle-wrap {
-    position: relative;
-    width: 15px;
+  position: relative;
+  width: 15px;
 }
 
 .candle-container .flame-wrap {
-    position: relative;
-    z-index: 99;
-    width: 100%;
-    background: #fcc56c;
-    height: 30px;
-    transform-origin: bottom center;
-    transform: scale(0);
-    clip-path: url(#my-flame-path);
+  position: relative;
+  z-index: 99;
+  width: 100%;
+  background: #fcc56c;
+  height: 30px;
+  transform-origin: bottom center;
+  transform: scale(0);
+  clip-path: url(#my-flame-path);
 }
 
 .candle-container .candle-top {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translatey(-50%);
-    width: 100%;
-    height: 8px;
-    background: white;
-    border-radius: 50%;
-    z-index: 9;
-    background: radial-gradient(#f4efe2, var(--c-terracotta));
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translatey(-50%);
+  width: 100%;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  z-index: 9;
+  background: radial-gradient(#f4efe2, var(--c-terracotta));
 }
 
 .candle-container .candle-base {
-    position: relative;
-    width: 100%;
-    height: 75px;
-    margin: 2px 0;
-    background: repeating-linear-gradient(45deg, #f4efe2, var(--c-terracotta) 20%);
+  position: relative;
+  width: 100%;
+  height: 75px;
+  margin: 2px 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #f4efe2,
+    var(--c-terracotta) 20%
+  );
 }
 
 .candle-container .candle-base:before {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    background: #eee;
-    transform: translateY(50%);
-    height: 5px;
-    width: 100%;
-    z-index: -1;
-    border-radius: 50%;
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #eee;
+  transform: translateY(50%);
+  height: 5px;
+  width: 100%;
+  z-index: -1;
+  border-radius: 50%;
 }
 
 .candle-container .candle-base:after {
-    content: '';
-    position: absolute;
-    left: 50%;
-    bottom: 0;
-    transform: translate(-50%, 50%);
-    height: 10px;
-    width: 200%;
-    border-radius: 50%;
-    background: radial-gradient(#3c2415, #1f1109);
-    z-index: -2;
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  height: 10px;
+  width: 200%;
+  border-radius: 50%;
+  background: radial-gradient(#3c2415, #1f1109);
+  z-index: -2;
 }
 
 /* ===== canvas ===== */
 canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 /* ===== words ===== */
 /* phones: shrink the rem so the whole scene scales down together */
 @media (max-width: 480px) {
   html {
     font-size: 14px;
-  }
-  
-  /* iPhone Safari fix: ensure signature doesn't get cut off */
-  .signature {
-    font-size: clamp(0.95rem, 3.5vw, 1.4rem);
-    padding: 0 16px;
   }
 }
 
@@ -1739,13 +1725,17 @@ img {
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.2s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.2s ease;
 }
 .replay.show {
   opacity: 1;
   pointer-events: auto;
   /* fade in to the pulse's low point, then pulse like the candle hint */
-  animation: replayIn 0.5s ease, hintFade 2.6s ease-in-out 0.5s infinite;
+  animation:
+    replayIn 0.5s ease,
+    hintFade 2.6s ease-in-out 0.5s infinite;
 }
 
 @keyframes replayIn {
@@ -1779,7 +1769,9 @@ img {
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .ear-hint.show {
