@@ -596,8 +596,7 @@ body {
   z-index: 10;
   height: 12rem;
   width: 13rem;
-  margin-bottom: 5rem;
-  left: 1.3125rem;
+  margin: 0 auto 5rem;
 }
 
 .komi-hair-extension {
