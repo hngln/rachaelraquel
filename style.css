@@ -1097,17 +1097,18 @@ body {
 
 .signature {
   position: fixed;
-  left: 50%;
+  left: 0;
+  right: 0;
   bottom: calc(2.2% + env(safe-area-inset-bottom, 0px));
-  width: max-content;
-  transform: translateX(-50%) rotate(-4deg);
+  padding: 0.3em 0;
+  transform: rotate(-4deg);
+  text-align: center;
   z-index: 8;
   font-family: "Caveat", cursive;
   font-weight: 600;
   font-size: clamp(1.15rem, 4.5vw, 1.7rem);
   color: rgba(244, 236, 218, 0.85);
   white-space: nowrap;
-  padding: 0 0.35em;
   pointer-events: none;
 }
 
