@@ -1,1083 +1,1842 @@
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="a little something for your birthday" />
-    <meta property="og:title" content="built for rachael michael" />
-    <meta
-      property="og:description"
-      content="a little something for your birthday. tap in."
-    />
-    <meta property="og:type" content="website" />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Poppins:wght@400;600;700;800&family=Shantell+Sans:wght@700&display=swap"
-    />
+/* ===== character ===== */
+:root {
+  --c-sky: #8ba888;
+  --c-sky-light: #a7c1a0;
+  --c-cream: #f2ead9;
+  --c-sand: #e4d8bf;
+  --c-terracotta: #c96f4a;
+  --c-terracotta-dark: #9c4f30;
+  --c-forest: #4b6b4a;
+  --c-forest-deep: #344d34;
 
-    <link rel="stylesheet" href="style.css" />
+  --c-ochre: #d99a3c;
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <title>for rachael</title>
-    <link rel="icon" type="image/svg+xml" href="hat.svg" />
-  </head>
-  <body>
-    <div class="scene" aria-hidden="true">
-      <div class="room-bg">
-        <div class="grad"></div>
-      </div>
-      <div class="bunting" id="bunting"></div>
-      <div class="vignette"></div>
-      <div class="grain"></div>
-    </div>
-    <div class="table-front" aria-hidden="true"></div>
-    <div class="gifts" aria-hidden="true">
-      <div class="gift g1" id="giftEgg">
-        <svg class="box" viewBox="0 0 58 50" aria-hidden="true">
-          <rect x="2" y="14" width="54" height="36" rx="7" fill="#4b6b4a" />
-          <rect
-            class="gift-inside"
-            x="5"
-            y="14"
-            width="48"
-            height="9"
-            rx="3"
-            fill="#2e3f2c"
-          />
-          <rect
-            class="gift-ribbon"
-            x="23.5"
-            y="14"
-            width="11"
-            height="36"
-            fill="#f4eeda"
-          />
-          <g class="gift-lid">
-            <rect x="0" y="6" width="58" height="12" rx="5" fill="#40603f" />
-            <rect x="24" y="6" width="10" height="12" fill="#f4eeda" />
-            <ellipse cx="20" cy="4.5" rx="8" ry="4.5" fill="#f4eeda" />
-            <ellipse cx="38" cy="4.5" rx="8" ry="4.5" fill="#f4eeda" />
-            <circle cx="29" cy="5.5" r="3.5" fill="#e6dcc0" />
-          </g>
-        </svg>
-      </div>
-    </div>
-    <div class="gift-pop" id="giftPop">
-      <div class="gift-pop__card">
-        <button
-          class="gift-pop__close"
-          id="giftPopClose"
-          type="button"
-          aria-label="close"
-        >
-          &times;
-        </button>
-        hehe you thought got something else?
-      </div>
-    </div>
-    <div class="plant" aria-hidden="true">
-      <svg viewBox="0 0 48 62">
-        <path d="M22 41 C10 38 3 28 8 18 C18 20 23 30 22 41 Z" fill="#6f8a68" />
-        <path
-          d="M26 41 C38 38 45 28 40 18 C30 20 25 30 26 41 Z"
-          fill="#5f7a5a"
-        />
-        <path
-          d="M24 42 C15 35 15 15 24 5 C33 15 33 35 24 42 Z"
-          fill="#4b6b4a"
-        />
-        <rect x="9" y="39" width="30" height="8" rx="3" fill="#c96f4a" />
-        <path d="M12 47 L36 47 L33 61 L15 61 Z" fill="#b45f3d" />
-      </svg>
-    </div>
-    <div class="signature" aria-hidden="true">built for rachael michael</div>
-    <canvas id="canvas"></canvas>
-    <div class="room-glow" aria-hidden="true"></div>
-    <div class="room-dim" aria-hidden="true"></div>
-    <div class="hint" id="hint">tap the candle</div>
-    <button class="replay" id="replay" type="button">light it again</button>
-    <!--Rachael-->
-    <div id="content" class="content">
-      <div class="content__line" id="content-line"></div>
-    </div>
-    <div class="scene-content">
-      <div class="ear-hint" id="earHint">psst tap me</div>
-      <div class="komi-container">
-        <div class="komi">
-          <div class="komi-head">
-            <div class="komi-hair-back">
-              <div class="komi-hair-back-1"></div>
-            </div>
-            <div class="komi-ear komi-ear-left"></div>
-            <div class="komi-ear komi-ear-right"></div>
-            <div class="komi-cat-ear komi-cat-ear-left">
-              <div class="komi-cat-ear-fur"></div>
-            </div>
-            <div class="komi-cat-ear komi-cat-ear-right">
-              <div class="komi-cat-ear-fur"></div>
-            </div>
-            <div class="komi-hair-strand"></div>
-            <div class="komi-face"></div>
-            <div class="komi-hair-front"></div>
-            <svg class="komi-hair-lines" viewBox="0 0 170 160" fill="none">
-              <path d="M85,11 C85.4,19 84.6,27 85,33" />
-              <path d="M82,15 C74,14 63,16 51,23" />
-              <path d="M80,20 C71,20 59,23 47,31" />
-              <path d="M88,15 C96,14 107,16 119,23" />
-              <path d="M90,20 C99,20 111,23 123,31" />
-            </svg>
-            <div class="komi-hair-bangs">
-              <div class="komi-hair-bangs-1"></div>
-              <div class="komi-hair-bangs-2"></div>
-              <div class="komi-hair-bangs-3"></div>
-            </div>
-            <div class="komi-face-inner">
-              <img src="glasses.svg" />
+  --bg-base: #ede4d1;
 
-              <div class="komi-eye komi-eye-left">
-                <div class="komi-eye-gaze">
-                  <div class="komi-eye-pupil">
-                    <div class="komi-eye-sparkle"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="komi-eye komi-eye-right">
-                <div class="komi-eye-gaze">
-                  <div class="komi-eye-pupil">
-                    <div class="komi-eye-sparkle"></div>
-                  </div>
-                </div>
-              </div>
-              <div class="komi-blush komi-blush-left"></div>
-              <div class="komi-blush komi-blush-right"></div>
-              <div class="komi-wink"></div>
-            </div>
-          </div>
-          <div class="komi-panel">
-            <div class="komi-hair-extension"></div>
-            <div class="komi-body">
-              <div class="komi-neck">
-                <div class="komi-neck-shadow"></div>
-                <div class="komi-collar komi-collar-left"></div>
-                <div class="komi-collar komi-collar-right"></div>
-                <div class="komi-bow">
-                  <div class="komi-bow-top">
-                    <div class="komi-bow-top-shadow"></div>
-                  </div>
-                  <div class="komi-bow-bottom"></div>
-                </div>
-              </div>
-              <div class="komi-shirt">
-                <div class="komi-shirt-sleeves"></div>
-                <div class="komi-shirt-sleeves-shadow"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="wrapper">
-        <div class="plate">
-          <div class="cake-wrap">
-            <div class="cake-topping">
-              <div class="topping-top">
-                <div class="candle-container">
-                  <div class="candle-wrap">
-                    <div class="flame-wrap" id="flame"></div>
-                    <div class="candle-base">
-                      <div class="candle-top"></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="topping-front">
-                <div class="top-layer"></div>
-                <div class="bottom-layer"></div>
-              </div>
-            </div>
-            <div class="cake-base">
-              <div class="base-front"></div>
-              <div class="base-top"></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <svg class="svg">
-      <clipPath id="my-clip-path" clipPathUnits="objectBoundingBox">
-        <path
-          d="M0,0 V0.481 s0.021,0.37,0.078,0.404 s0.035,-0.296,0.102,-0.27 s0.007,0.363,0.096,0.354 s0.028,-0.466,0.1,-0.487 S0.406,0.999,0.457,0.999 s0.03,-0.502,0.075,-0.518 s0.041,0.488,0.081,0.274 c0.007,-0.038,0.021,-0.187,0.044,-0.215 c0.014,-0.017,0.038,0.401,0.075,0.392 s0.023,-0.28,0.074,-0.392 c0.022,-0.04,0.072,0.359,0.1,0.344 c0.057,-0.029,0.094,-0.405,0.094,-0.405 V-0.001"
-        ></path>
-      </clipPath>
-      <clipPath id="my-flame-path" clipPathUnits="objectBoundingBox">
-        <path
-          d="M0.501,0 s0.188,0.101,0.295,0.238 s0.123,0.15,0.169,0.286 S1,0.74,0.928,0.838 S0.711,1,0.501,1 S0.216,0.937,0.09,0.838 s-0.083,-0.149,0,-0.29 s0.23,-0.139,0.333,-0.276 S0.501,0,0.501,0"
-        ></path>
-      </clipPath>
-      <clipPath id="hair-front-path" clipPathUnits="objectBoundingBox">
-        <path
-          d="M0,0 H1 V0.74 C0.8,0.68 0.6,0.4 0.5,0.36 C0.4,0.4 0.2,0.68 0,0.74 Z"
-        ></path>
-      </clipPath>
-      <clipPath id="hair-mass-path" clipPathUnits="objectBoundingBox">
-        <path
-          d="M0.11,0 Q0.01,0.02 0.02,0.07 Q-0.02,0.12 0.05,0.15 Q0.11,0.17 0.075,0.20 Q-0.02,0.24 0.04,0.29 Q0.12,0.32 0.07,0.35 Q-0.03,0.40 0.03,0.46 Q0.10,0.49 0.06,0.52 Q-0.02,0.57 0.04,0.62 Q0.11,0.65 0.07,0.68 Q-0.01,0.73 0.04,0.78 Q0.11,0.81 0.07,0.84 Q0.00,0.89 0.05,0.94 Q0.09,0.97 0.08,1 L0.92,1 Q0.91,0.95 0.95,0.90 Q1.01,0.85 0.94,0.81 Q0.87,0.77 0.93,0.72 Q1.02,0.66 0.95,0.61 Q0.88,0.57 0.94,0.53 Q1.02,0.47 0.96,0.42 Q0.89,0.38 0.94,0.34 Q1.03,0.28 0.96,0.22 Q0.89,0.18 0.94,0.14 Q1.01,0.08 0.95,0.04 Q0.92,0.01 0.89,0 Z"
-        ></path>
-      </clipPath>
-      <clipPath id="hair-lock-path" clipPathUnits="objectBoundingBox">
-        <path
-          d="M0.30,0 L1,0 Q0.82,0.06 0.90,0.12 Q1.00,0.20 0.86,0.27 Q0.74,0.33 0.86,0.40 Q0.98,0.48 0.84,0.55 Q0.72,0.61 0.82,0.68 Q0.92,0.76 0.78,0.83 Q0.66,0.88 0.72,0.93 Q0.75,0.97 0.55,0.99 Q0.35,1.01 0.28,0.96 Q0.05,0.90 0.18,0.83 Q0.32,0.76 0.16,0.68 Q0.00,0.60 0.16,0.52 Q0.30,0.45 0.14,0.37 Q-0.02,0.29 0.12,0.21 Q0.26,0.14 0.10,0.07 Q0.02,0.03 0.30,0 Z"
-        ></path>
-      </clipPath>
-    </svg>
-  </body>
-  <script>
-    const prefersReduced = window.matchMedia(
-      "(prefers-reduced-motion: reduce)",
-    ).matches;
+  --website-background: var(--bg-base);
+  --black: #242424;
+  --white: #fff;
+  --komi-panel: transparent;
+  --primary-color: #1c1a1a;
+  --primary-color-dark: #0e0d0d;
+  --primary-color-tint: #322e2e;
+  --hair-line: #4a4340;
+  --secondary-color: #d29f77;
+  --accent-color: #f2695c;
+  --sparkle-color: #ffe085;
+  --shirt-color: #5f7d5a;
+  --shirt-color-dark: #52704e;
+  --shirt-color-dark-2: #46613f;
+  --bow-color-1: var(--c-terracotta);
+  --bow-color-2: var(--c-terracotta-dark);
+  --bow-gradient: repeating-linear-gradient(
+    -45deg,
+    var(--bow-color-1) 0 0.25rem,
+    var(--bow-color-2) 0.25rem 0.375rem
+  );
+  --line-width-1: 0.125rem;
+  --line-width-2: 0.375rem;
+}
 
-    // bunting: sagging string with flags hanging from each dip
-    const buntingEl = document.getElementById("bunting");
-    const FLAG_COLORS = ["#c96f4a", "#d99a3c", "#4b6b4a"];
-    // fixed per-flag tilt and size wobble so the digits read hand painted, not cloned
-    const DIGIT_TILT = [-3.2, 2.4, -1.6, 3.4, -2.8, 1.9];
-    const DIGIT_SIZE = [1.04, 0.95, 1.02, 0.97, 1.05, 0.96];
-    function drawBunting() {
-      const W = buntingEl.clientWidth;
-      const H = buntingEl.clientHeight;
-      if (!W) return;
-      const DOB = "160704"; // one digit per flag, her date of birth
-      const n = DOB.length;
-      const flagW = (W / n) * 0.72;
-      const flagH = flagW * 0.82;
-      const anchorY = 12;
-      const sag = Math.min(90, W * 0.075);
+img {
+  width: 100%;
+  z-index: 10;
+  top: 3.3rem;
+}
 
-      // string spans the whole width, dipping in the middle
-      const yAt = (x) => anchorY + sag * (1 - Math.pow((2 * x) / W - 1, 2));
-      const slopeAt = (x) => (sag * -4 * ((2 * x) / W - 1)) / W;
+* {
+  box-sizing: border-box;
+}
 
-      let d = `M 0 ${yAt(0).toFixed(1)}`;
-      for (let x = 6; x < W; x += 6)
-        d += ` L ${x.toFixed(1)} ${yAt(x).toFixed(1)}`;
-      d += ` L ${W} ${yAt(W).toFixed(1)}`;
+body {
+  display: grid;
+  position: relative;
+  place-items: center;
+  background-color: var(--website-background);
+  font-size: 16px;
+  line-height: 1;
+  font-family: "Kiwi Maru", serif;
+  overflow-x: hidden;
+}
 
-      let flags = "";
-      for (let i = 0; i < n; i++) {
-        const cx = (W * (i + 0.5)) / n;
-        const cy = yAt(cx);
-        const ang = (Math.atan(slopeAt(cx)) * 180) / Math.PI;
-        const c = FLAG_COLORS[i % 3];
-        flags += `<g transform="translate(${cx.toFixed(1)} ${cy.toFixed(
-          1,
-        )}) rotate(${ang.toFixed(2)})" filter="url(#buntingDrop)">
-          <g class="flag-cloth">
-            <polygon points="${-flagW / 2},0 ${flagW / 2},0 0,${flagH}" fill="${c}"/>
-            <text x="0" y="${(flagH * 0.34).toFixed(1)}" dy="0.35em" text-anchor="middle"
-              transform="rotate(${DIGIT_TILT[i]})"
-              font-family="Caveat, cursive" font-weight="600" font-size="${(flagW * 0.66 * DIGIT_SIZE[i]).toFixed(1)}"
-              fill="#f2ead9">${DOB[i]}</text>
-          </g>
-        </g>`;
-      }
+.komi-container {
+  position: relative;
+  z-index: 4;
+  transform-origin: 50% 88%;
+  animation: komiBreathe 4.6s ease-in-out infinite;
+}
 
-      buntingEl.innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMin meet">
-        <defs>
-          <filter id="buntingDrop" x="-20%" y="-20%" width="140%" height="180%">
-            <feDropShadow dx="0" dy="4" stdDeviation="2" flood-color="#3c3022" flood-opacity="0.3"/>
-          </filter>
-        </defs>
-        <g>
-          ${flags}
-          <path d="${d}" fill="none" stroke="#6f6045" stroke-width="2.5" stroke-linecap="round" opacity="0.9"/>
-        </g>
-      </svg>`;
-    }
-    drawBunting();
-    window.addEventListener("resize", drawBunting);
+@keyframes komiBreathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.012);
+  }
+}
 
-    // now and then a random flag flaps, like a small draft
-    function scheduleFlap() {
-      setTimeout(
-        () => {
-          const cloths = buntingEl.querySelectorAll(".flag-cloth");
-          if (cloths.length) {
-            const f = cloths[(Math.random() * cloths.length) | 0];
-            f.classList.remove("flap");
-            void f.getBoundingClientRect();
-            f.classList.add("flap");
-          }
-          scheduleFlap();
-        },
-        3000 + Math.random() * 4000,
-      );
-    }
-    if (!prefersReduced) scheduleFlap();
+@media (prefers-reduced-motion: reduce) {
+  .komi-container {
+    animation: none;
+  }
+}
 
-    // table edge near the top of the plate; gifts rest on the table beside the cake
-    function positionFloor() {
-      const plate = document.querySelector(".wrapper .plate");
-      if (!plate) return;
-      const r = plate.getBoundingClientRect();
-      const y = ((r.top + r.height * 0.1) / window.innerHeight) * 100;
-      const root = document.documentElement.style;
-      root.setProperty("--floorY", y.toFixed(1) + "%");
-      root.setProperty("--giftLeft", (r.left - 88).toFixed(0) + "px");
-      root.setProperty("--giftTop", (r.bottom - 4).toFixed(0) + "px");
-      root.setProperty("--plantLeft", (r.right + 34).toFixed(0) + "px");
-      root.setProperty("--hintY", (r.bottom + 22).toFixed(0) + "px");
-      // centre the message in the band between the bunting and the psst pill
-      const pill = document.getElementById("earHint");
-      if (pill) {
-        const top = 120;
-        const pillTop = pill.getBoundingClientRect().top;
-        root.setProperty("--msgY", ((top + pillTop) / 2).toFixed(0) + "px");
-        // cap the font so even a three-line message stays inside the band
-        const fs = Math.min(window.innerWidth * 0.08, (pillTop - top) / 3.6, 64);
-        root.setProperty("--msgFs", fs.toFixed(1) + "px");
-      }
-    }
-    positionFloor();
-    window.addEventListener("resize", positionFloor);
-    window.addEventListener("load", positionFloor);
+.komi *,
+.komi *::before,
+.komi *::after {
+  position: absolute;
+}
 
-    // cake entrance
-    const timeline = gsap.timeline({ duration: 0.3 });
-    timeline.fromTo(
-      ".cake-topping",
-      { yPercent: -300, opacity: 0.5 },
-      { yPercent: 0, opacity: 1 },
-    );
-    timeline.to(".candle-container", { opacity: 1 });
+.komi-head,
+.komi-body,
+.komi-hair-extension {
+  animation: none;
+}
 
-    // confetti
-    const canvas = document.getElementById("canvas");
-    const ctx = canvas.getContext("2d");
-    function sizeCanvas() {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    sizeCanvas();
-    window.addEventListener("resize", sizeCanvas);
+.komi-eye {
+  top: 4.5rem;
+  right: var(--eye-right);
+  bottom: auto;
+  left: var(--eye-left);
+  --flip: 1;
+  --eye-offset: 1.25rem;
+  --pupil-offset: 0.5rem;
+  --eye-line-top-offset: -13%;
+  --eye-line-bottom-offset: 16%;
+  z-index: 2;
+  height: 3.75rem;
+  width: 4rem;
+  transform-origin: center 70%;
+  border-radius: 100%;
+  background-color: var(--white);
+  overflow: hidden;
+}
 
-    const CONFETTI_COLORS = [
-      "#c96f4a",
-      "#e0a13c",
-      "#4b6b4a",
-      "#8ba888",
-      "#f2ead9",
-      "#6f8a68",
-    ];
-    let confetti = [];
-    const CONFETTI_SHAPES = ["rect", "rect", "circle", "streamer"];
-    function addConfettiPiece(x, y, vx, vy, drifting) {
-      confetti.push({
-        x: x,
-        y: y,
-        vx: vx,
-        vy: vy,
-        g: (drifting ? 0.045 : 0.08) + Math.random() * 0.04,
-        size: 6 + Math.random() * 6,
-        shape: CONFETTI_SHAPES[(Math.random() * CONFETTI_SHAPES.length) | 0],
-        color: CONFETTI_COLORS[(Math.random() * CONFETTI_COLORS.length) | 0],
-        rot: Math.random() * Math.PI,
-        vr: (Math.random() - 0.5) * 0.3,
-        life: 1,
-        decay: 0.0035 + Math.random() * 0.0015,
-        sway: Math.random() * 2 - 1,
-      });
-    }
-    function burstConfetti(x, y) {
-      const count = prefersReduced ? 60 : 160;
-      for (let i = 0; i < count; i++) {
-        addConfettiPiece(
-          x,
-          y,
-          (Math.random() - 0.5) * 13,
-          Math.random() * -13 - 5,
-        );
-      }
-    }
-    // corner cannons fire up and inward; dir 1 from the left corner, -1 from the right
-    function cannonConfetti(x, y, dir) {
-      if (prefersReduced) return;
-      for (let i = 0; i < 140; i++) {
-        addConfettiPiece(
-          x,
-          y - Math.random() * 80,
-          dir * (3.5 + Math.random() * 9),
-          -(11 + Math.random() * 9),
-        );
-      }
-    }
-    // light pieces drift down from the top for a while after the bursts
-    function confettiRain(duration) {
-      if (prefersReduced) return;
-      const end = performance.now() + duration;
-      (function drip() {
-        if (performance.now() > end) return;
-        for (let i = 0; i < 5; i++) {
-          addConfettiPiece(
-            Math.random() * canvas.width,
-            -14,
-            (Math.random() - 0.5) * 1.6,
-            1 + Math.random() * 1.6,
-            true,
-          );
-        }
-        setTimeout(drip, 120);
-      })();
-    }
-    function renderConfetti() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (let i = confetti.length - 1; i >= 0; i--) {
-        const p = confetti[i];
-        p.vx *= 0.97;
-        p.vy = p.vy * 0.97 + p.g;
-        p.x += p.vx + Math.sin(p.life * 10) * p.sway * 0.3;
-        p.y += p.vy;
-        p.rot += p.vr;
-        p.life -= p.decay;
-        if (p.life <= 0 || p.y > canvas.height + 20) {
-          confetti.splice(i, 1);
-          continue;
-        }
-        ctx.save();
-        ctx.globalAlpha = p.life > 0.25 ? 1 : Math.max(0, p.life / 0.25);
-        ctx.translate(p.x, p.y);
-        ctx.rotate(p.rot);
-        // paper flip as the piece tumbles
-        if (p.shape !== "circle")
-          ctx.scale(1, 0.35 + Math.abs(Math.sin(p.rot * 2)) * 0.65);
-        ctx.fillStyle = p.color;
-        if (p.shape === "circle") {
-          ctx.beginPath();
-          ctx.arc(0, 0, p.size * 0.38, 0, 7);
-          ctx.fill();
-        } else if (p.shape === "streamer") {
-          ctx.fillRect(
-            -p.size * 0.2,
-            -p.size * 1.1,
-            p.size * 0.4,
-            p.size * 2.2,
-          );
-        } else {
-          ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size * 0.6);
-        }
-        ctx.restore();
-      }
-      requestAnimationFrame(renderConfetti);
-    }
-    renderConfetti();
+.komi-eye.blink {
+  animation: blinky 0.16s ease-out;
+}
 
-    // gift easter egg: enough taps pop the box open, the prize is a troll note
-    const giftEgg = document.getElementById("giftEgg");
-    const giftPop = document.getElementById("giftPop");
-    let giftTaps = 0;
-    let giftOpened = false;
-    function showGiftNote() {
-      giftPop.classList.add("show");
-    }
-    document
-      .getElementById("giftPopClose")
-      .addEventListener("click", () => giftPop.classList.remove("show"));
-    giftPop.addEventListener("click", (e) => {
-      if (e.target === giftPop) giftPop.classList.remove("show");
-    });
-    giftEgg.addEventListener("click", () => {
-      // the unboxing unlocks with the cat ears; before that the box is a
-      // plain prop that hops like the plant
-      if (!earsFound) {
-        hop(giftEgg.querySelector(".box"));
-        return;
-      }
-      if (giftOpened) {
-        showGiftNote();
-        return;
-      }
-      giftTaps++;
-      const box = giftEgg.querySelector(".box");
-      // each tap shakes harder and loosens the wrapping a step further
-      box.style.setProperty("--amp", Math.min(2 + giftTaps * 2, 10) + "deg");
-      box.classList.remove("shake", "hop");
-      void box.getBoundingClientRect();
-      box.classList.add("shake");
-      box.classList.add("worn" + Math.min(giftTaps, 3));
-      if (giftTaps >= 4) {
-        giftOpened = true;
-        giftEgg.classList.add("open");
-        if (!prefersReduced) {
-          const r = giftEgg.getBoundingClientRect();
-          for (let i = 0; i < 26; i++)
-            addConfettiPiece(
-              r.left + r.width / 2,
-              r.top,
-              (Math.random() - 0.5) * 6,
-              Math.random() * -7 - 2,
-            );
-        }
-        showGiftNote();
-      }
-    });
+.komi-eye.wink {
+  animation: winkClose 0.5s ease;
+}
 
-    // smoke puff
-    function puffSmoke() {
-      const wrap = document.querySelector(".candle-wrap");
-      for (let i = 0; i < 3; i++) {
-        const s = document.createElement("div");
-        s.className = "smoke";
-        wrap.appendChild(s);
-        gsap.fromTo(
-          s,
-          { y: -6, x: 0, opacity: 0.5, scale: 0.4 },
-          {
-            y: -72 - i * 12,
-            x: (i - 1) * 12,
-            opacity: 0,
-            scale: 1.5,
-            duration: 1.6 + i * 0.25,
-            ease: "power1.out",
-            onComplete: () => s.remove(),
-          },
-        );
-      }
-    }
+.komi-wink {
+  top: 6.1rem;
+  right: 1.95rem;
+  width: 2.5rem;
+  height: 1rem;
+  border-bottom: 0.28rem solid var(--black);
+  border-radius: 0 0 60% 60% / 0 0 100% 100%;
+  opacity: 0;
+  z-index: 3;
+}
 
-    // messages
-    const MESSAGES = [
-      "a few more wishes for you",
-      "may you see more mountains than deadlines",
-      "may you remember the good food you ate",
-      "may every cat let you pat them",
-      "go do everything you keep saying",
-      "never lose that energy it's my favourite thing about you",
-      "happy 22nd birthday rachael",
-    ];
-    const line = document.getElementById("content-line");
-    let msgTl = null;
-    let hasPlayedMessages = false;
-    function startMessages() {
-      stopMessages();
-      msgTl = gsap.timeline({
-        delay: 6.8,
-        onComplete: () => {
-          hasPlayedMessages = true;
-          gsap.delayedCall(2, unlockEars);
-        },
-      });
-      MESSAGES.forEach((m, i) => {
-        const isLast = i === MESSAGES.length - 1;
-        const isSincere = i === MESSAGES.length - 2;
-        msgTl.call(() => {
-          line.textContent = m;
-        });
-        const gap = i > 0 ? "+=0.4" : "+=0";
-        if (isSincere) {
-          // the sincere line appears still and soft, no slide
-          msgTl.fromTo(
-            line,
-            { opacity: 0, y: 0, scale: 0.97 },
-            { opacity: 1, scale: 1, duration: 1.1, ease: "power1.out" },
-            gap,
-          );
-        } else if (isLast) {
-          // the greeting lands with a small settle and stays
-          msgTl.fromTo(
-            line,
-            { opacity: 0, y: 30, scale: 1 },
-            { opacity: 1, y: 0, duration: 0.8, ease: "back.out(1.6)" },
-            gap,
-          );
-        } else {
-          msgTl.fromTo(
-            line,
-            { opacity: 0, y: 24 },
-            { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-            gap,
-          );
-        }
-        if (!isLast) {
-          // the sincere line holds long enough for a read, a re-read, and
-          // the pause where it sinks in
-          msgTl.to(
-            line,
-            { opacity: 0, y: -24, duration: 0.5, ease: "power2.in" },
-            "+=" + (isSincere ? 5 : i === 0 ? 3.4 : 2.4),
-          );
-        }
-      });
-    }
-    function stopMessages() {
-      if (msgTl) {
-        msgTl.kill();
-        msgTl = null;
-      }
-      line.textContent = "";
-      gsap.set(line, { opacity: 0 });
-    }
+.komi-wink.show {
+  animation: winkLid 0.5s ease;
+}
 
-    // tap the character for the cat ears; a nudge fades in later if she misses it
-    const komiHead = document.querySelector(".komi-head");
-    const earHint = document.getElementById("earHint");
-    let earsUnlocked = false;
-    let earsFound = false;
-    let winking = false;
+.komi-blush.pop {
+  animation: winkBlush 0.5s ease;
+}
 
-    function unlockEars() {
-      earsUnlocked = true;
-      komiHead.classList.add("ready");
-      if (!earsFound) {
-        setTimeout(() => {
-          if (earsFound) return;
-          earHint.classList.add("show");
-          startWink();
-        }, 2000);
-      }
-    }
+.komi-container.tilt {
+  animation: winkTilt 0.5s ease;
+}
 
-    function offerReplay() {
-      gsap.delayedCall(1.2, () =>
-        document.getElementById("replay").classList.add("show"),
-      );
-    }
+.komi-eye::before,
+.komi-eye::after {
+  content: "";
+}
 
-    function markEarsFound() {
-      if (earsFound) return;
-      earsFound = true;
-      earHint.classList.remove("show");
-      stopWink();
-      // the replay offer waits until she has found the cat ears
-      offerReplay();
-    }
+.komi-eye::before {
+  top: -0.0625rem;
+  right: var(--eye-line-top-right);
+  bottom: auto;
+  left: var(--eye-line-top-left);
+  height: 120%;
+  width: 120%;
+  transform: rotate(calc(-12deg * var(--flip)));
+  border-radius: 100%;
+  border: var(--line-width-2) solid transparent;
+  border-top: var(--line-width-2) solid var(--black);
+}
 
-    komiHead.addEventListener("click", () => {
-      if (!earsUnlocked) return;
-      komiHead.classList.toggle("ears");
-      if (earsFound && phase === "blown") offerReplay();
-      markEarsFound();
-    });
+.komi-eye::after {
+  top: auto;
+  right: var(--eye-line-bottom-right);
+  bottom: 0;
+  left: var(--eye-line-bottom-left);
+  height: 15%;
+  width: 50%;
+  transform: rotate(calc(8deg * var(--flip)));
+  border-radius: 100%;
+  border: var(--line-width-1) solid transparent;
+  border-bottom: var(--line-width-1) solid var(--black);
+}
 
-    // eyes blink at random intervals
-    const eyes = document.querySelectorAll(".komi-eye");
-    function blinkOnce() {
-      if (winking) return;
-      eyes.forEach((e) => {
-        e.classList.remove("blink");
-        void e.offsetWidth;
-        e.classList.add("blink");
-      });
-    }
-    function scheduleBlink() {
-      setTimeout(
-        () => {
-          blinkOnce();
-          if (Math.random() < 0.35)
-            setTimeout(blinkOnce, 170 + Math.random() * 130);
-          scheduleBlink();
-        },
-        1500 + Math.random() * 3200,
-      );
-    }
-    scheduleBlink();
+.komi-eye-sparkle {
+  inset: 15% 20%;
+  transform: scale(var(--eye-sparkle-scale, 0));
+  transition: 0.4s ease-in-out;
+}
 
-    // wink at her until she taps for the cat ears
-    const winkEye = document.querySelector(".komi-eye-right");
-    const winkLid = document.querySelector(".komi-wink");
-    const winkBlush = document.querySelectorAll(".komi-blush");
-    const komiContainer = document.querySelector(".komi-container");
-    let winkTimer = null;
-    function retrigger(el, cls) {
-      el.classList.remove(cls);
-      void el.offsetWidth;
-      el.classList.add(cls);
-    }
-    function winkOnce() {
-      winkEye.classList.remove("blink");
-      retrigger(winkEye, "wink");
-      retrigger(winkLid, "show");
-      retrigger(komiContainer, "tilt");
-      winkBlush.forEach((b) => retrigger(b, "pop"));
-    }
-    function winkLoop() {
-      if (!winking) return;
-      winkOnce();
-      winkTimer = setTimeout(winkLoop, 8000);
-    }
-    function startWink() {
-      if (winking) return;
-      winking = true;
-      winkTimer = setTimeout(winkLoop, 250);
-    }
-    function stopWink() {
-      winking = false;
-      if (winkTimer) clearTimeout(winkTimer);
-      winkEye.classList.remove("wink");
-      winkLid.classList.remove("show");
-      komiContainer.classList.remove("tilt");
-      winkBlush.forEach((b) => b.classList.remove("pop"));
-    }
+.komi-eye-sparkle::before,
+.komi-eye-sparkle::after {
+  content: "";
+  border-radius: 100%;
+  background-color: var(--sparkle-color);
+}
 
-    // eyes: glance at taps, follow a dragging finger, watch the flame while lit
-    const gazeWraps = document.querySelectorAll(".komi-eye-gaze");
-    const gazeEyes = document.querySelectorAll(".komi-eye");
-    const GAZE_MAX_X = 8; // px the pupils may travel sideways
-    const GAZE_MAX_UP = 7;
-    const GAZE_MAX_DOWN = 6;
-    const GAZE_NEAR = 160; // px; closer touches move the eyes less
-    const gaze = { x: 0, y: 0, tx: 0, ty: 0 };
-    let gazeDragging = false;
-    let gazePointerDown = false;
-    let gazeDownX = 0;
-    let gazeDownY = 0;
-    let glanceTimer = null;
-    let gazeRaf = null;
+.komi-eye-sparkle::before {
+  left: 50%;
+  height: 100%;
+  width: 0.5rem;
+  transform: translateX(-50%);
+  animation: twinkleY 0.3s infinite;
+}
 
-    function gazeFaceCenter() {
-      const a = gazeEyes[0].getBoundingClientRect();
-      const b = gazeEyes[1].getBoundingClientRect();
-      return {
-        x: (a.left + a.right + b.left + b.right) / 4,
-        y: (a.top + a.bottom + b.top + b.bottom) / 4,
-      };
-    }
+.komi-eye-sparkle::after {
+  top: 50%;
+  width: 100%;
+  height: 0.5rem;
+  transform: translateY(-50%);
+  animation: twinkleX 0.3s 0.3s infinite;
+}
 
-    function gazeAt(px, py) {
-      const c = gazeFaceCenter();
-      const dx = px - c.x;
-      const dy = py - c.y;
-      const dist = Math.hypot(dx, dy) || 1;
-      const reach = Math.min(1, dist / GAZE_NEAR);
-      gaze.tx = (dx / dist) * GAZE_MAX_X * reach;
-      gaze.ty = (dy / dist) * (dy < 0 ? GAZE_MAX_UP : GAZE_MAX_DOWN) * reach;
-      gazeWake();
-    }
+.komi-eye-gaze {
+  inset: 0;
+  will-change: transform;
+}
 
-    function gazeRest() {
-      // between interactions the eyes settle on the flame while it burns
-      if (phase === "lit") {
-        const r = flame.getBoundingClientRect();
-        gazeAt(r.left + r.width / 2, r.top + r.height / 2);
-      } else {
-        gaze.tx = 0;
-        gaze.ty = 0;
-        gazeWake();
-      }
-    }
+.komi-eye-pupil {
+  top: 0.75rem;
+  right: var(--pupil-right);
+  bottom: auto;
+  left: var(--pupil-left);
+  height: 2.5rem;
+  width: 2.5rem;
+  transform: scale(var(--eye-pupil-scale, 1));
+  border-radius: 100%;
+  background-color: var(--black);
+  transition: 0.4s ease-in-out;
+  overflow: hidden;
+}
 
-    function gazeStep() {
-      gaze.x += (gaze.tx - gaze.x) * 0.16;
-      gaze.y += (gaze.ty - gaze.y) * 0.16;
-      const settled =
-        !gazeDragging &&
-        Math.abs(gaze.tx - gaze.x) < 0.1 &&
-        Math.abs(gaze.ty - gaze.y) < 0.1;
-      if (settled) {
-        gaze.x = gaze.tx;
-        gaze.y = gaze.ty;
-      }
-      gazeWraps.forEach((w) => {
-        w.style.transform = `translate(${gaze.x.toFixed(2)}px, ${gaze.y.toFixed(2)}px)`;
-      });
-      gazeRaf = settled ? null : requestAnimationFrame(gazeStep);
-    }
+.komi-eye-pupil::before {
+  content: "";
+  top: 60%;
+  left: 50%;
+  height: 100%;
+  width: 130%;
+  transform: translateX(-50%);
+  border-radius: 100%;
+  background-color: var(--primary-color-tint);
+}
 
-    function gazeWake() {
-      if (gazeRaf === null) gazeRaf = requestAnimationFrame(gazeStep);
-    }
+.komi-eye-left {
+  --eye-left: var(--eye-offset);
+  --pupil-right: var(--pupil-offset);
+  --eye-line-top-left: var(--eye-line-top-offset);
+  --eye-line-bottom-left: var(--eye-line-bottom-offset);
+}
 
-    function gazePointerEnd() {
-      if (!gazePointerDown) return;
-      gazePointerDown = false;
-      if (gazeDragging) {
-        gazeDragging = false;
-        gazeRest();
-      } else {
-        // a plain tap holds the glance briefly, then the eyes drift back
-        glanceTimer = setTimeout(gazeRest, 700);
-      }
-    }
+.komi-eye-right {
+  --flip: -1;
+  --eye-right: var(--eye-offset);
+  --pupil-left: var(--pupil-offset);
+  --eye-line-top-right: var(--eye-line-top-offset);
+  --eye-line-bottom-right: var(--eye-line-bottom-offset);
+}
 
-    // native image/text drag cancels the pointer stream mid-gesture
-    window.addEventListener("dragstart", (e) => e.preventDefault());
+.komi-blush {
+  top: 7.5rem;
+  right: var(--blush-right);
+  bottom: auto;
+  left: var(--blush-left);
+  --blush-offset: 0.75rem;
+  height: 2rem;
+  width: 2.5rem;
+  border-radius: 100%;
+  background-color: var(--accent-color);
+  opacity: var(--blush-opacity, 0.22);
+  transition: 0.8s;
+}
 
-    if (!prefersReduced) {
-      window.addEventListener("pointerdown", (e) => {
-        if (!e.isPrimary) return;
-        gazePointerDown = true;
-        gazeDragging = false;
-        gazeDownX = e.clientX;
-        gazeDownY = e.clientY;
-        clearTimeout(glanceTimer);
-        gazeAt(e.clientX, e.clientY);
-      });
-      window.addEventListener("pointermove", (e) => {
-        if (!e.isPrimary || !gazePointerDown) return;
-        if (
-          !gazeDragging &&
-          Math.hypot(e.clientX - gazeDownX, e.clientY - gazeDownY) < 6
-        )
-          return;
-        gazeDragging = true;
-        gazeAt(e.clientX, e.clientY);
-      });
-      window.addEventListener("pointerup", gazePointerEnd);
-      window.addEventListener("pointercancel", gazePointerEnd);
-    }
+.komi-blush-left {
+  --blush-left: var(--blush-offset);
+}
 
-    // gift and plant hop at the blow-out; only the plant hops on tap,
-    // the gift box has its own easter-egg tap feedback
-    const giftBoxEl = document.querySelector(".gifts .g1 .box");
-    const plantEl = document.querySelector(".plant svg");
-    function hop(el, delay = 0) {
-      if (prefersReduced || !el) return;
-      setTimeout(() => {
-        el.classList.remove("hop", "shake");
-        void el.getBoundingClientRect();
-        el.classList.add("hop");
-      }, delay);
-    }
-    function hopAll() {
-      hop(giftBoxEl, 150);
-      hop(plantEl, 240);
-    }
-    if (plantEl) plantEl.addEventListener("pointerdown", () => hop(plantEl));
+.komi-blush-right {
+  --blush-right: var(--blush-offset);
+}
 
-    // candle: tap to light it, then blow it out
-    const flame = document.getElementById("flame");
-    const hint = document.getElementById("hint");
-    const wrapper = document.querySelector(".wrapper");
-    const hasMic = !!(
-      navigator.mediaDevices && navigator.mediaDevices.getUserMedia
-    );
-    let micState = hasMic ? "idle" : "off"; // idle -> starting -> on | off
-    let phase = "unlit"; // unlit -> lit -> blown
-    let readyToBlow = false;
+.komi-ear {
+  top: 5.75rem;
+  right: var(--ear-right);
+  bottom: auto;
+  left: var(--ear-left);
+  --flip: 1;
+  --ear-offset: -1.25rem;
+  height: 3rem;
+  width: 2rem;
+  transform: rotate(calc(40deg * var(--flip)));
+  border-radius: 100%;
+  background-color: var(--secondary-color);
+}
 
-    gsap.set(flame, { scale: 0, transformOrigin: "bottom center" });
-    hint.textContent = "tap the candle to light it";
+.komi-ear-left {
+  --flip: -1;
+  --ear-left: var(--ear-offset);
+  z-index: -1;
+}
 
-    // organic idle sway, two waves so it never looks metronomic
-    function flameIdleR(t) {
-      return Math.sin(t / 260) * 5 + Math.sin(t / 83) * 2.5;
-    }
-    function flameIdleY(t) {
-      return Math.sin(t / 190) * 0.05;
-    }
-    // single writer while the mic is not live; the mic loop takes over otherwise
-    function flameSway() {
-      if (phase !== "lit") return;
-      const micLive =
-        micState === "on" && audioCtx && audioCtx.state === "running";
-      if (!micLive) {
-        const t = performance.now();
-        gsap.set(flame, {
-          rotation: flameIdleR(t),
-          scaleY: 1 + flameIdleY(t),
-        });
-      }
-      requestAnimationFrame(flameSway);
-    }
+.komi-ear-right {
+  --ear-right: var(--ear-offset);
+}
 
-    function positionRoomLight() {
-      const r = flame.getBoundingClientRect();
-      const fx = (((r.left + r.width / 2) / window.innerWidth) * 100).toFixed(
-        1,
-      );
-      const fy = (((r.top + r.height / 2) / window.innerHeight) * 100).toFixed(
-        1,
-      );
-      document.documentElement.style.setProperty("--fx", fx + "%");
-      document.documentElement.style.setProperty("--fy", fy + "%");
-    }
+.komi-cat-ear {
+  top: var(--cat-ear-translate, 4rem);
+  right: var(--cat-ear-right);
+  bottom: auto;
+  left: var(--cat-ear-left);
+  --flip: 1;
+  --cat-ear-offset: -3rem;
+  --cat-ear-fur-offset: 20%;
+  --cat-ear-fur-1-offset: 1.75rem;
+  --cat-ear-fur-2-offset: 1.5rem;
+  z-index: -1;
+  height: 6rem;
+  width: 5rem;
+  /* fully hidden until she unlocks them; the tucked tips used to poke past
+     the hair silhouette */
+  opacity: 0;
+  transition: 0.5s ease-in-out;
+}
 
-    function lightCandle() {
-      if (phase !== "unlit") return;
-      phase = "lit";
-      positionRoomLight();
-      document.body.classList.add("lit");
-      gsap.fromTo(
-        flame,
-        { scale: 0 },
-        {
-          scale: 1,
-          duration: 0.45,
-          ease: "back.out(1.7)",
-          transformOrigin: "bottom center",
-        },
-      );
-      if (!prefersReduced && !gazePointerDown) gazeRest();
-      // the sway starts once the grow-in tween has finished
-      if (!prefersReduced) setTimeout(flameSway, 600);
-      // wish beat: "make a wish" holds solid, then the blow-out cue resumes the pulse
-      hint.textContent = "make a wish";
-      hint.classList.add("steady");
-      setTimeout(() => {
-        if (phase !== "lit") return;
-        if (hasMic && micState === "idle") {
-          armMic();
-          // if the permission prompt stalls or is dismissed, offer the tap
-          setTimeout(() => {
-            if (phase === "lit" && micState === "starting") {
-              setHintCue("tap the candle");
-            }
-          }, 3000);
-        } else if (micState === "on") {
-          setHintCue("blow out the candle");
-        } else {
-          setHintCue("tap the candle");
-        }
-        readyToBlow = true;
-      }, 2200);
-    }
+.komi-head.ears .komi-cat-ear {
+  opacity: 1;
+}
 
-    // swapping to the next cue is what ends the "make a wish" solid hold
-    function setHintCue(text) {
-      hint.textContent = text;
-      hint.classList.remove("steady");
-    }
+.komi-cat-ear::before {
+  content: "";
+  inset: 0;
+  transform-origin: var(--cat-ear-transform-origin);
+  transform: rotate(calc(30deg * var(--flip)));
+  border-radius: inherit;
+  background-color: var(--primary-color);
+}
 
-    // blow-out beats: dark + smoke, light returns, confetti + hops, then the words
-    function blowOut() {
-      if (phase !== "lit") return;
-      phase = "blown";
-      hint.classList.add("hide");
-      gsap.to(flame, {
-        scale: 0,
-        opacity: 0,
-        duration: 0.35,
-        ease: "power2.in",
-        transformOrigin: "bottom center",
-      });
-      puffSmoke();
-      const r = flame.getBoundingClientRect();
-      setTimeout(() => document.body.classList.remove("lit"), 1300);
-      setTimeout(
-        () => burstConfetti(r.left + r.width / 2, r.top + r.height / 2),
-        2000,
-      );
-      setTimeout(() => cannonConfetti(-10, window.innerHeight, 1), 2200);
-      setTimeout(
-        () => cannonConfetti(window.innerWidth + 10, window.innerHeight, -1),
-        2350,
-      );
-      setTimeout(() => confettiRain(3200), 2400);
-      setTimeout(hopAll, 2100);
-      if (!prefersReduced && !gazePointerDown) gazeRest();
-      if (!hasPlayedMessages) startMessages();
-    }
+.komi-cat-ear-fur {
+  top: 10%;
+  right: var(--cat-ear-fur-right);
+  bottom: auto;
+  left: var(--cat-ear-fur-left);
+  height: 70%;
+  width: 70%;
+  transform-origin: var(--cat-ear-transform-origin);
+  transform: rotate(calc(30deg * var(--flip)));
+  border-radius: inherit;
+  background-color: var(--primary-color-tint);
+}
 
-    function armMic() {
-      if (micState !== "idle") return;
-      micState = "starting";
-      navigator.mediaDevices
-        .getUserMedia({
-          audio: {
-            echoCancellation: false,
-            noiseSuppression: false,
-            autoGainControl: false,
-          },
-        })
-        .then(listenForBlow)
-        .catch(() => {
-          micState = "off";
-          setHintCue("tap the candle");
-        });
-    }
+.komi-cat-ear-fur::before,
+.komi-cat-ear-fur::after {
+  content: "";
+  border-radius: var(--cat-ear-fur-border-radius);
+  background-color: var(--primary-color);
+}
 
-    let audioCtx = null;
-    function listenForBlow(stream) {
-      const AC = window.AudioContext || window.webkitAudioContext;
-      const ac = new AC();
-      audioCtx = ac;
-      if (ac.state === "suspended") ac.resume();
-      // iOS keeps the context suspended until a user gesture; retry on every tap
-      window.addEventListener("pointerdown", () => {
-        if (ac.state !== "running") ac.resume();
-      });
-      const analyser = ac.createAnalyser();
-      analyser.fftSize = 512;
-      analyser.smoothingTimeConstant = 0.6;
-      ac.createMediaStreamSource(stream).connect(analyser);
-      const data = new Uint8Array(analyser.frequencyBinCount);
+.komi-cat-ear-fur::before {
+  top: -0.625rem;
+  right: var(--cat-ear-fur-1-right);
+  bottom: auto;
+  left: var(--cat-ear-fur-1-left);
+  height: 2rem;
+  width: 2rem;
+  transform: rotate(calc(-70deg * var(--flip)));
+}
 
-      micState = "on";
-      setHintCue("blow out the candle");
-      gsap.set(flame, { transformOrigin: "bottom center" });
+.komi-cat-ear-fur::after {
+  top: -0.25rem;
+  right: var(--cat-ear-fur-2-right);
+  bottom: auto;
+  left: var(--cat-ear-fur-2-left);
+  height: 1rem;
+  width: 1rem;
+  transform: rotate(calc(-50deg * var(--flip)));
+}
 
-      const THRESH = 88; // low-band loudness that counts as a blow
-      const NEED = 5; // frames in a row to confirm
-      let over = 0;
+.komi-cat-ear-left {
+  --cat-ear-left: var(--cat-ear-offset);
+  --cat-ear-transform-origin: right bottom;
+  --cat-ear-fur-left: var(--cat-ear-fur-offset);
+  --cat-ear-fur-1-left: var(--cat-ear-fur-1-offset);
+  --cat-ear-fur-2-left: var(--cat-ear-fur-2-offset);
+  --cat-ear-fur-border-radius: 0 100% 0 100%;
+  border-radius: 0.5rem 0 0 100%;
+}
 
-      function loop() {
-        analyser.getByteFrequencyData(data);
-        let sum = 0;
-        for (let i = 2; i < 24; i++) sum += data[i];
-        const level = sum / 22;
+.komi-cat-ear-right {
+  --flip: -1;
+  --cat-ear-right: var(--cat-ear-offset);
+  --cat-ear-transform-origin: left bottom;
+  --cat-ear-fur-right: var(--cat-ear-fur-offset);
+  --cat-ear-fur-1-right: var(--cat-ear-fur-1-offset);
+  --cat-ear-fur-2-right: var(--cat-ear-fur-2-offset);
+  --cat-ear-fur-border-radius: 100% 0 100% 0;
+  border-radius: 0 0.5rem 100% 0;
+  animation: var(--cat-ear-animation);
+}
 
-        if (phase === "lit") {
-          const w = Math.min(level / 100, 1.2);
-          const t = performance.now();
-          gsap.set(flame, {
-            rotation: flameIdleR(t) + Math.sin(t / 45) * 16 * w,
-            scaleY: 1 + flameIdleY(t) - Math.min(w * 0.3, 0.34),
-          });
-          if (level > THRESH) {
-            if (++over >= NEED) blowOut();
-          } else {
-            over = Math.max(0, over - 1);
-          }
-        } else {
-          over = 0;
-        }
-        requestAnimationFrame(loop);
-      }
-      loop();
-    }
+.komi-face {
+  inset: 0;
+  background-color: var(--secondary-color);
+  border-radius: 50% 50% 50% 40%;
+}
 
-    // keyboard fallback for lighting
-    window.addEventListener("keydown", lightCandle);
+/* hair coming down at the temples */
+.komi-face::before,
+.komi-face::after {
+  content: "";
+  top: 1rem;
+  height: 5.5rem;
+  width: 4rem;
+  transform-origin: center top;
+}
 
-    // tapping the candle lights it; once lit, a tap blows it out unless the mic is
-    // live: covers denial, a stalled permission prompt, and iOS keeping the audio
-    // context suspended
-    wrapper.addEventListener("click", () => {
-      if (phase === "unlit") {
-        lightCandle();
-        return;
-      }
-      if (phase !== "lit" || !readyToBlow) return;
-      const micLive =
-        micState === "on" && audioCtx && audioCtx.state === "running";
-      if (!micLive) blowOut();
-    });
+.komi-face::before {
+  left: 1.2rem;
+  top: 1.4rem;
+  border-left: 1.25rem solid var(--primary-color);
+  border-bottom-left-radius: 100%;
+  transform: rotate(30deg);
+}
 
-    // replay: reset the scene so she can light and blow again
-    const replay = document.getElementById("replay");
-    function resetScene() {
-      phase = "unlit";
-      readyToBlow = false;
-      document.body.classList.remove("lit");
-      gsap.set(flame, {
-        scale: 0,
-        opacity: 1,
-        rotation: 0,
-        scaleY: 1,
-        transformOrigin: "bottom center",
-      });
-      hint.classList.remove("hide", "steady");
-      hint.textContent = "tap the candle to light it";
-      replay.classList.remove("show");
-      // after the first full run the last message and the found ears stay
-      if (!hasPlayedMessages) {
-        stopMessages();
-        earsUnlocked = false;
-        earsFound = false;
-        stopWink();
-        earHint.classList.remove("show");
-        komiHead.classList.remove("ready", "ears");
-      }
-    }
-    replay.addEventListener("click", (e) => {
-      e.stopPropagation();
-      resetScene();
-    });
-  </script>
-</html>
+.komi-face::after {
+  right: 1.2rem;
+  top: 1.4rem;
+  border-right: 1.25rem solid var(--primary-color);
+  border-bottom-right-radius: 100%;
+  transform: rotate(-30deg);
+}
+
+.komi-face-inner {
+  inset: 0;
+}
+
+/* eyebrows */
+.komi-face-inner::before,
+.komi-face-inner::after {
+  content: "";
+  top: 2.6rem;
+  height: 1.2rem;
+  width: 2.4rem;
+  border-radius: 100%;
+  border: 0.35rem solid transparent;
+  border-top-color: var(--primary-color);
+}
+
+.komi-face-inner::before {
+  left: 2.05rem;
+  transform: rotate(-7deg);
+}
+
+.komi-face-inner::after {
+  right: 2.05rem;
+  transform: rotate(7deg);
+}
+
+.komi-hair-back {
+  top: -2rem;
+  left: -2rem;
+  width: 120%;
+}
+
+.komi-hair-back-1 {
+  width: 100%;
+  height: 9.5rem;
+  transform: rotate(-10deg);
+  border-radius: 100%;
+  background-color: var(--primary-color);
+  box-shadow:
+    -1.3rem 2.3rem 0 -2.5rem var(--primary-color),
+    1.5rem 2.5rem 0 -2.2rem var(--primary-color),
+    0.5rem -1.25rem 0 -2.1rem var(--primary-color),
+    -2.3rem 0.7rem 0 -2.6rem var(--primary-color),
+    2.4rem -0.5rem 0 -2.4rem var(--primary-color);
+}
+
+.komi-hair-back-1::before,
+.komi-hair-back-1::after {
+  content: "";
+}
+
+.komi-hair-back-1::before {
+  top: 5.5rem;
+  right: -1rem;
+  width: 50%;
+  height: 60%;
+  background-color: inherit;
+  border-radius: 100%;
+  box-shadow: -0.25rem 3rem 0 -2rem var(--primary-color);
+}
+
+.komi-hair-back-1::after {
+  inset: 0;
+  border-radius: inherit;
+  border-left: 1rem solid var(--primary-color);
+}
+
+.komi-hair-lines {
+  top: -3rem;
+  left: -2rem;
+  width: 17rem;
+  height: 16rem;
+  overflow: visible;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.komi-hair-lines path {
+  stroke: var(--hair-line);
+  stroke-width: 1.8;
+  stroke-linecap: round;
+}
+
+.komi-hair-front {
+  z-index: 1;
+  top: -0.2rem;
+  left: 14%;
+  width: 72%;
+  height: 3rem;
+  background-color: var(--primary-color);
+  clip-path: url(#hair-front-path);
+}
+
+.komi-hair-bangs {
+  display: none;
+}
+
+.komi-hair-bangs::before,
+.komi-hair-bangs::after {
+  content: "";
+  z-index: 2;
+  background-color: var(--primary-color-tint);
+}
+
+.komi-hair-bangs::before {
+  top: 2.5rem;
+  left: -3.75rem;
+  height: 1rem;
+  width: 1rem;
+  transform: rotate(-2deg) skewY(20deg);
+  border-radius: 0.25rem;
+}
+
+.komi-hair-bangs::after {
+  top: 2.25rem;
+  left: 0.5rem;
+  height: 1rem;
+  width: 90%;
+  transform: rotate(-2deg) skewY(10deg);
+  border-radius: 0.25rem;
+}
+
+.komi-hair-bangs-1,
+.komi-hair-bangs-2 {
+  transform-origin: center top;
+  background-color: var(--primary-color);
+}
+
+.komi-hair-bangs-1 {
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 6rem;
+  transform: rotate(-8deg);
+  border-bottom-left-radius: 100% 50%;
+}
+
+.komi-hair-bangs-1::before {
+  content: "";
+  left: -1.5rem;
+  height: 80%;
+  width: 3rem;
+  border-bottom-left-radius: 100%;
+  transform: rotate(50deg);
+  border-left: 1.5rem solid var(--primary-color);
+}
+
+.komi-hair-bangs-2 {
+  top: 0;
+  left: 50%;
+  width: 45%;
+  height: 6.5rem;
+  transform: rotate(-12deg);
+  border-bottom-left-radius: 100% 70%;
+}
+
+.komi-hair-bangs-3 {
+  top: 1.5rem;
+  left: -1.75rem;
+  height: 6rem;
+  width: 4.5rem;
+  border-bottom-left-radius: 100%;
+  transform-origin: center top;
+  transform: rotate(45deg);
+  border-left: 1.75rem solid var(--primary-color);
+}
+
+.komi-hair-strand {
+  z-index: -1;
+  top: 4rem;
+  left: -1rem;
+  height: 13rem;
+  width: 4rem;
+  background-color: var(--primary-color);
+  clip-path: url(#hair-lock-path);
+}
+
+.komi-head {
+  position: relative;
+  z-index: 10;
+  height: 12rem;
+  width: 13rem;
+  margin: 0 auto 5rem;
+}
+
+.komi-hair-extension {
+  top: 3rem;
+  left: calc(50% - 6.7rem);
+  width: 13.7rem;
+  height: 14rem;
+  background-color: var(--primary-color);
+  clip-path: url(#hair-mass-path);
+}
+
+.komi-hair-extension::after {
+  content: "";
+  left: 1rem;
+  height: 100%;
+  width: 5rem;
+  background-color: var(--primary-color-dark);
+}
+
+.komi-neck {
+  z-index: 2;
+  bottom: calc(100% - 0.25rem);
+  left: 50%;
+  height: 5rem;
+  width: 2rem;
+  transform: translateX(-50%);
+  background-color: var(--secondary-color);
+}
+
+.komi-neck::after {
+  content: "";
+  z-index: -1;
+  top: calc(100% - 0.125rem);
+  left: 50%;
+  border: 1.125rem solid transparent;
+  border-top-color: var(--secondary-color);
+  transform: translateX(-50%);
+}
+
+.komi-neck-shadow {
+  inset: 0;
+  overflow: hidden;
+}
+
+.komi-neck-shadow::before {
+  content: "";
+  top: 0.25rem;
+  left: 50%;
+  width: 250%;
+  height: 3rem;
+  border-radius: 100%;
+  background-color: var(--black);
+  transform: translateX(-50%);
+  opacity: 0.1;
+}
+
+.komi-collar {
+  --flip: 1;
+  --collar-offset: -4.4375rem;
+  bottom: -0.5rem;
+  left: 50%;
+  height: 3rem;
+  width: 100%;
+  transform: translateX(-50%) skewY(calc(-15deg * var(--flip))) scaleY(0.6);
+}
+
+.komi-collar::before {
+  top: 0.5rem;
+  right: var(--collar-right);
+  bottom: auto;
+  left: var(--collar-left);
+  content: "";
+  height: 0;
+  width: 0;
+  border: 2.5rem solid transparent;
+  border-top-color: var(--shirt-color);
+  transform: rotate(calc(78deg * var(--flip)));
+}
+
+.komi-collar-left {
+  --collar-left: var(--collar-offset);
+}
+
+.komi-collar-right {
+  --flip: -1;
+  --collar-right: var(--collar-offset);
+}
+
+.komi-bow {
+  bottom: -1.875rem;
+  left: 50%;
+  height: 0.75rem;
+  width: 1.25rem;
+  transform: translateX(-50%);
+}
+
+.komi-bow::after {
+  content: "";
+  z-index: 3;
+  inset: 0;
+  border-radius: 0.75rem;
+  background-color: var(--bow-color-1);
+  background-image: var(--bow-gradient);
+}
+
+.komi-bow-top {
+  --flip: 1;
+  --bow-top-offset: 0.75rem;
+  z-index: 2;
+  inset: 0;
+}
+
+.komi-bow-top::before,
+.komi-bow-top::after {
+  top: -0.25rem;
+  right: var(--bow-top-right);
+  bottom: auto;
+  left: var(--bow-top-left);
+  content: "";
+  height: 1.75rem;
+  width: 1.75rem;
+  transform: rotate(calc(-15deg * var(--flip))) perspective(1rem)
+    rotateY(calc(22deg * var(--flip)));
+  background-color: var(--bow-color-1);
+  background-image: var(--bow-gradient);
+  border-radius: 0.25rem;
+}
+
+.komi-bow-top::before {
+  --bow-top-right: var(--bow-top-offset);
+}
+
+.komi-bow-top::after {
+  --bow-top-left: var(--bow-top-offset);
+  --flip: -1;
+}
+
+.komi-bow-top-shadow {
+  --bow-top-shadow-offset: 0.75rem;
+  inset: 0;
+}
+
+.komi-bow-top-shadow::before,
+.komi-bow-top-shadow::after {
+  top: 0.125rem;
+  right: var(--bow-top-shadow-right);
+  bottom: auto;
+  left: var(--bow-top-shadow-left);
+  content: "";
+  z-index: 1;
+  height: 0.75rem;
+  width: 1.25rem;
+  transform: rotate(calc(-15deg * var(--flip)));
+  border-radius: 100%;
+  background-color: var(--bow-color-2);
+  mix-blend-mode: multiply;
+  opacity: 0.4;
+}
+
+.komi-bow-top-shadow::before {
+  --bow-top-shadow-right: var(--bow-top-shadow-offset);
+}
+
+.komi-bow-top-shadow::after {
+  --bow-top-shadow-left: var(--bow-top-shadow-offset);
+  --flip: -1;
+}
+
+.komi-bow-bottom {
+  --flip: 1;
+  --bow-bottom-offset: -1.5rem;
+  z-index: 1;
+  inset: 0;
+}
+
+.komi-bow-bottom::before,
+.komi-bow-bottom::after {
+  top: 0.325rem;
+  right: var(--bow-bottom-right);
+  bottom: auto;
+  left: var(--bow-bottom-left);
+  content: "";
+  height: 1.75rem;
+  width: 2rem;
+  transform: rotate(calc(15deg * var(--flip)));
+  border-radius: 0.125rem;
+  background-color: var(--bow-color-1);
+  background-image: var(--bow-gradient);
+}
+
+.komi-bow-bottom::before {
+  --bow-bottom-left: var(--bow-bottom-offset);
+}
+
+.komi-bow-bottom::after {
+  --bow-bottom-right: var(--bow-bottom-offset);
+  --flip: -1;
+}
+
+.komi-shirt {
+  --flip: 1;
+  z-index: 1;
+  top: -0.5rem;
+  left: 50%;
+  width: 9rem;
+  height: 8rem;
+  transform: translateX(-50%);
+}
+
+.komi-shirt::before,
+.komi-shirt::after {
+  top: 0;
+  right: var(--shirt-right);
+  bottom: auto;
+  left: var(--shirt-left);
+  content: "";
+  z-index: 2;
+  height: 100%;
+  width: 70%;
+  border-radius: 0.5rem;
+  background-color: var(--shirt-color-dark);
+  transform: rotate(calc(8deg * var(--flip)));
+}
+
+.komi-shirt::before {
+  --shirt-left: 0;
+  --flip: -1;
+}
+
+.komi-shirt::after {
+  --shirt-right: 0;
+}
+
+.komi-shirt-sleeves::before,
+.komi-shirt-sleeves::after {
+  top: 1rem;
+  right: var(--shirt-sleeve-right);
+  bottom: auto;
+  left: var(--shirt-sleeve-left);
+  content: "";
+  z-index: -1;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 0.25rem;
+  background-color: var(--shirt-color-dark);
+  transform: rotate(calc(20deg * var(--flip)));
+}
+
+.komi-shirt-sleeves::before {
+  --shirt-sleeve-left: -1.25rem;
+}
+
+.komi-shirt-sleeves::after {
+  --shirt-sleeve-right: -1.25rem;
+  --flip: -1;
+}
+
+.komi-shirt-sleeves,
+.komi-shirt-sleeves-shadow {
+  inset: 0;
+}
+
+.komi-shirt-sleeves-shadow {
+  z-index: 1;
+}
+
+.komi-shirt-sleeves-shadow::before,
+.komi-shirt-sleeves-shadow::after {
+  top: 2.5rem;
+  right: var(--shirt-sleeve-sh-right);
+  bottom: auto;
+  left: var(--shirt-sleeve-sh-left);
+  content: "";
+  height: 50%;
+  width: 1.5rem;
+  transform: rotate(calc(20deg * var(--flip)));
+  background-color: var(--shirt-color-dark-2);
+}
+
+.komi-shirt-sleeves-shadow::before {
+  --shirt-sleeve-sh-left: -1rem;
+}
+
+.komi-shirt-sleeves-shadow::after {
+  --shirt-sleeve-sh-right: -1rem;
+  --flip: -1;
+}
+
+.komi-body {
+  z-index: 1;
+  top: 12rem;
+  left: calc(50% - 6rem);
+  height: 6rem;
+  width: 12rem;
+}
+
+.komi-panel {
+  top: 2rem;
+  left: 50%;
+  width: clamp(20rem, 50vw, 30rem);
+  height: 15rem;
+  transform: translateX(-50%);
+  background-color: var(--komi-panel);
+  overflow: hidden;
+  z-index: 1;
+}
+
+.komi-head.ears {
+  --eye-pupil-scale: 1.1;
+  --eye-sparkle-scale: 1;
+  --blush-opacity: 0.3;
+  --cat-ear-scale: 1;
+  --cat-ear-translate: -3rem;
+  --cat-ear-animation: catEarTwitch 3s 0.5s infinite;
+}
+
+.komi-head.ready {
+  cursor: pointer;
+}
+
+.komi-head.ears,
+.komi-head.ears + .komi-panel {
+  animation: none;
+}
+
+@keyframes blinky {
+  0% {
+    transform: scaleY(1);
+  }
+  32% {
+    transform: scaleY(0.06);
+  }
+  46% {
+    transform: scaleY(0.06);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes winkClose {
+  0% {
+    transform: scaleY(1);
+  }
+  22% {
+    transform: scaleY(0);
+  }
+  60% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes winkLid {
+  0%,
+  14% {
+    opacity: 0;
+  }
+  24%,
+  58% {
+    opacity: 1;
+  }
+  70%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes winkTilt {
+  0% {
+    transform: rotate(0deg);
+  }
+  30% {
+    transform: rotate(3deg);
+  }
+  66% {
+    transform: rotate(3deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes winkBlush {
+  0% {
+    opacity: var(--blush-opacity, 0.22);
+    transform: scale(1);
+  }
+  40% {
+    opacity: 0.5;
+    transform: scale(1.18);
+  }
+  100% {
+    opacity: var(--blush-opacity, 0.22);
+    transform: scale(1);
+  }
+}
+
+@keyframes twinkleY {
+  0%,
+  100% {
+    transform: translateX(-50%) scaleY(1);
+  }
+
+  50% {
+    transform: translateX(-50%) scaleY(0.5);
+  }
+}
+
+@keyframes twinkleX {
+  0%,
+  100% {
+    transform: translateY(-50%) scaleX(1);
+  }
+
+  50% {
+    transform: translateY(-50%) scaleX(0.5);
+  }
+}
+
+@keyframes catEarTwitch {
+  0%,
+  70%,
+  90% {
+    transform: rotate(0deg);
+  }
+
+  80%,
+  95% {
+    transform: rotate(5deg) scaleX(0.9);
+  }
+}
+
+/* ===== scene ===== */
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  background: var(--bg-base);
+}
+
+.room-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.room-bg .grad {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, #f4ecdb 0%, #ece3d0 55%, #e3d7bd 100%);
+}
+.plant {
+  position: fixed;
+  left: var(--plantLeft, 70%);
+  top: var(--giftTop, 80%);
+  z-index: 7;
+  width: 52px;
+  transform: translateY(-100%);
+  transform-origin: bottom center;
+}
+.plant svg {
+  display: block;
+  width: 100%;
+}
+
+/* gifts and envelope hop; the shadow ellipse stays on the table */
+.gifts .box.hop,
+.plant svg.hop {
+  animation: propHop 0.55s cubic-bezier(0.34, 1.4, 0.64, 1);
+  transform-origin: 50% 100%;
+}
+
+@keyframes propHop {
+  0%,
+  100% {
+    transform: translateY(0) scale(1, 1);
+  }
+  18% {
+    transform: translateY(2px) scale(1.06, 0.9);
+  }
+  50% {
+    transform: translateY(-12px) scale(0.96, 1.05);
+  }
+  78% {
+    transform: translateY(0) scale(1.04, 0.94);
+  }
+}
+
+.signature {
+  position: fixed;
+  left: 50%;
+  bottom: calc(2.2% + env(safe-area-inset-bottom, 0px));
+  width: max-content;
+  transform: translateX(-50%) rotate(-4deg);
+  z-index: 8;
+  font-family: "Caveat", cursive;
+  font-weight: 600;
+  font-size: clamp(1.15rem, 4.5vw, 1.7rem);
+  color: rgba(244, 236, 218, 0.85);
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.table-front {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: var(--floorY, 62%);
+  bottom: 0;
+  z-index: 6;
+  pointer-events: none;
+  background: linear-gradient(180deg, #ddd0b6 0%, #cec0a0 42%, #a2906c 100%);
+}
+.table-front::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 7px;
+  background: linear-gradient(180deg, rgba(60, 44, 26, 0.1), transparent);
+}
+
+.gifts {
+  position: fixed;
+  left: var(--giftLeft, 18px);
+  top: var(--giftTop, 80%);
+  width: 58px;
+  z-index: 7;
+}
+.gifts .gift {
+  position: absolute;
+  bottom: 0;
+}
+.gifts .box {
+  display: block;
+}
+.gifts .g1 {
+  left: 0;
+  cursor: pointer;
+}
+.gifts .g1 .box {
+  width: 58px;
+  height: 50px;
+}
+.gifts .box.shake {
+  animation: giftShake 0.3s ease;
+  transform-origin: 50% 100%;
+}
+@keyframes giftShake {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  25% {
+    transform: rotate(calc(var(--amp, 4deg) * -1));
+  }
+  65% {
+    transform: rotate(var(--amp, 4deg));
+  }
+}
+.gifts .gift.open .box {
+  transform: rotate(-3deg);
+}
+.gift-pop {
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(30, 24, 16, 0.35);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+.gift-pop.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+.gift-pop__card {
+  position: relative;
+  max-width: min(78vw, 320px);
+  background: #4b6b4a;
+  color: #f4eeda;
+  text-align: center;
+  font-family: "Shantell Sans", cursive;
+  font-weight: 700;
+  font-size: 1.1rem;
+  line-height: 1.4;
+  padding: 1.7rem 1.5rem 1.4rem;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(40, 30, 18, 0.35);
+  transform: scale(0.92);
+  transition: transform 0.25s ease;
+}
+.gift-pop.show .gift-pop__card {
+  transform: scale(1);
+}
+.gift-pop__close {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  width: 2rem;
+  height: 2rem;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #f4eeda;
+  font-size: 1.3rem;
+  line-height: 1;
+  cursor: pointer;
+}
+.gift-pop__close:hover {
+  background: rgba(244, 238, 218, 0.14);
+}
+/* the lid flies off when the box opens, leaving the dark inside visible */
+.gifts .gift.open .box .gift-lid {
+  animation: lidPop 0.6s ease forwards;
+}
+@keyframes lidPop {
+  to {
+    transform: translateY(-44px) rotate(26deg);
+    opacity: 0;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gifts .box.shake {
+    animation: none;
+  }
+}
+/* unwrapping: the ribbon loosens then slips off, then the lid gets pried up */
+.gifts .box .gift-ribbon,
+.gifts .box .gift-lid {
+  transition:
+    transform 0.25s ease,
+    opacity 0.3s ease;
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+}
+.gifts .box.worn1 .gift-ribbon {
+  transform: rotate(7deg);
+}
+.gifts .box.worn2 .gift-ribbon {
+  transform: translateY(32px) rotate(24deg);
+  opacity: 0;
+}
+.gifts .box.worn2 .gift-lid {
+  transform: rotate(-3deg);
+}
+.gifts .box.worn3 .gift-lid {
+  transform: translateY(-5px) rotate(-9deg);
+}
+/* the inside shows only once the lid is pried up */
+.gifts .box .gift-inside {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+.gifts .box.worn3 .gift-inside,
+.gifts .gift.open .box .gift-inside {
+  opacity: 1;
+}
+
+.gifts::after,
+.plant::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -4px;
+  transform: translateX(-50%);
+  border-radius: 50%;
+  background: rgba(64, 47, 29, 0.16);
+  z-index: -1;
+}
+.gifts::after {
+  width: 66px;
+  height: 12px;
+}
+.plant::after {
+  width: 40px;
+  height: 9px;
+  bottom: -4px;
+}
+
+.room-dim {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 1s ease;
+  background: radial-gradient(
+    circle 240px at var(--fx, 50%) var(--fy, 52%),
+    rgba(20, 14, 6, 0) 40%,
+    rgba(20, 14, 6, 0.62) 100%
+  );
+}
+
+.room-glow {
+  position: fixed;
+  inset: 0;
+  z-index: 49;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.8s ease;
+  mix-blend-mode: soft-light;
+  background: radial-gradient(
+    circle 200px at var(--fx, 50%) var(--fy, 52%),
+    rgba(255, 197, 110, 0.5),
+    rgba(255, 197, 110, 0) 62%
+  );
+}
+
+body.lit .room-dim,
+body.lit .room-glow {
+  opacity: 1;
+}
+
+.bunting {
+  position: absolute;
+  top: 0.3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 560px);
+  height: 9.6rem;
+  pointer-events: none;
+}
+
+.bunting svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.bunting .flag-cloth {
+  transform-box: fill-box;
+  transform-origin: 50% 0;
+}
+
+.bunting .flag-cloth.flap {
+  animation: flagFlap 0.9s ease-in-out;
+}
+
+@keyframes flagFlap {
+  0%,
+  100% {
+    transform: rotate(0);
+  }
+  30% {
+    transform: rotate(3deg);
+  }
+  65% {
+    transform: rotate(-2deg);
+  }
+}
+
+.vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse 74% 64% at 50% 44%,
+    transparent 58%,
+    rgba(74, 52, 32, 0.2) 100%
+  );
+}
+
+.grain {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.12;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 180px 180px;
+}
+
+.scene-content {
+  position: relative;
+  margin-top: 9rem;
+}
+
+/* tall phones: drop the character and table to widen the message band */
+@media (max-width: 480px) and (min-height: 640px) {
+  .scene-content {
+    margin-top: 10.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .grain {
+    opacity: 0.08;
+  }
+}
+
+/* ===== cake ===== */
+:root {
+  --plate-background: #f4efe2;
+  --plate-base-box-shadow: #9a927f;
+  --cake-base-background: #6b4128;
+  --cake-topping: #3c2415;
+}
+
+*,
+*:before,
+*:after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.svg {
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.wrapper,
+.plate,
+.candle-container {
+  display: grid;
+  place-items: center;
+}
+
+.wrapper {
+  position: relative;
+  transform: scale(0.65);
+  z-index: 10;
+  bottom: 2.2rem;
+  cursor: pointer;
+}
+
+.smoke {
+  position: absolute;
+  top: -6px;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  margin-left: -7px;
+  border-radius: 50%;
+  background: rgba(120, 120, 120, 0.5);
+  filter: blur(3px);
+  pointer-events: none;
+  z-index: 100;
+}
+
+.plate {
+  position: relative;
+  width: 250px;
+  height: 75px;
+  background: var(--plate-background);
+  margin-top: 0;
+  border-radius: 50%;
+  box-shadow: 0px 3px 5px 0px var(--plate-base-box-shadow);
+}
+
+.cake-wrap {
+  position: absolute;
+  bottom: 50%;
+}
+
+.cake-base {
+  position: relative;
+  width: 200px;
+  height: 50px;
+  background: var(--cake-base-background);
+}
+
+.cake-base .base-front {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+}
+
+.cake-base .base-front:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 100%;
+  width: 100%;
+  height: 55px;
+  transform: translatey(-50%);
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cake-base .base-top {
+  position: absolute;
+  width: 100%;
+  height: 65px;
+  top: 0;
+  transform: translatey(-50%);
+  border-radius: 50%;
+  background: inherit;
+}
+
+.cake-base .base-top:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(0 0, 0% 50%, 100% 50%, 100% 0);
+}
+
+.cake-base .base-top:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border-bottom-color: black;
+  clip-path: polygon(0 50%, 60% 50%, 60% 101%, 0 101%);
+}
+
+.cake-topping {
+  position: absolute;
+  bottom: 0%;
+  width: 200px;
+  height: 100px;
+  z-index: 99;
+}
+
+.cake-topping .topping-front {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--cake-topping) 40%, transparent);
+}
+
+.cake-topping .topping-front .top-layer {
+  height: 30%;
+  background: var(--cake-topping);
+}
+
+.cake-topping .topping-front .bottom-layer {
+  position: relative;
+  height: 70%;
+  background: var(--cake-topping);
+  clip-path: url("#my-clip-path");
+}
+
+.cake-topping .topping-top {
+  background: var(--cake-topping);
+  position: absolute;
+  width: 100%;
+  height: 65px;
+  top: 0;
+  transform: translatey(-50%);
+  border-radius: 50%;
+  z-index: 9;
+}
+
+.cake-topping .topping-top:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  clip-path: polygon(0 0, 0% 50%, 100% 50%, 100% 0);
+}
+
+.cake-topping .topping-top:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 -1px 1px 2px rgba(26, 15, 9, 0.45);
+  clip-path: polygon(10% 50%, 70% 50%, 70% 101%, 10% 101%);
+}
+
+.candle-container {
+  width: 200px;
+  position: absolute;
+  bottom: 60%;
+  z-index: 9999;
+  opacity: 0;
+}
+
+.candle-container .candle-wrap {
+  position: relative;
+  width: 15px;
+}
+
+.candle-container .flame-wrap {
+  position: relative;
+  z-index: 99;
+  width: 100%;
+  background: #fcc56c;
+  height: 30px;
+  transform-origin: bottom center;
+  transform: scale(0);
+  clip-path: url(#my-flame-path);
+}
+
+.candle-container .candle-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translatey(-50%);
+  width: 100%;
+  height: 8px;
+  background: white;
+  border-radius: 50%;
+  z-index: 9;
+  background: radial-gradient(#f4efe2, var(--c-terracotta));
+}
+
+.candle-container .candle-base {
+  position: relative;
+  width: 100%;
+  height: 75px;
+  margin: 2px 0;
+  background: repeating-linear-gradient(
+    45deg,
+    #f4efe2,
+    var(--c-terracotta) 20%
+  );
+}
+
+.candle-container .candle-base:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background: #eee;
+  transform: translateY(50%);
+  height: 5px;
+  width: 100%;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.candle-container .candle-base:after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 50%);
+  height: 10px;
+  width: 200%;
+  border-radius: 50%;
+  background: radial-gradient(#3c2415, #1f1109);
+  z-index: -2;
+}
+
+/* ===== canvas ===== */
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+/* ===== words ===== */
+/* phones: shrink the rem so the whole scene scales down together */
+@media (max-width: 480px) {
+  html {
+    font-size: 14px;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+  font-family: "Poppins", sans-serif;
+  touch-action: none;
+  overscroll-behavior: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+img {
+  -webkit-user-drag: none;
+  user-drag: none;
+}
+
+.hint {
+  position: fixed;
+  top: var(--hintY, 72%);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  padding: 0.5rem 1.1rem;
+  border-radius: 2rem;
+  background: rgba(52, 77, 52, 0.55);
+  color: var(--c-cream);
+  font-weight: 600;
+  font-size: 0.95rem;
+  white-space: nowrap;
+  animation: hintFade 2.6s ease-in-out infinite;
+}
+
+.hint.steady {
+  animation: none;
+  opacity: 1;
+}
+
+.hint.hide {
+  opacity: 0;
+  pointer-events: none;
+  animation: none;
+  transition: opacity 0.4s ease;
+}
+
+.replay {
+  position: fixed;
+  top: var(--hintY, 72%);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 60;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--c-cream);
+  background: rgba(52, 77, 52, 0.55);
+  border: 0;
+  padding: 0.55rem 1.2rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.5s ease,
+    transform 0.2s ease;
+}
+.replay.show {
+  opacity: 1;
+  pointer-events: auto;
+  /* fade in to the pulse's low point, then pulse like the candle hint */
+  animation:
+    replayIn 0.5s ease,
+    hintFade 2.6s ease-in-out 0.5s infinite;
+}
+
+@keyframes replayIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 0.6;
+  }
+}
+.replay:hover {
+  transform: translateX(-50%) translateY(-1px);
+}
+.replay:focus-visible {
+  outline: 2px solid var(--c-forest);
+  outline-offset: 2px;
+}
+
+.ear-hint {
+  position: absolute;
+  top: -3.9rem;
+  left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  z-index: 6;
+  padding: 0.4rem 0.9rem;
+  border-radius: 2rem;
+  background: rgba(52, 77, 52, 0.55);
+  color: var(--c-cream);
+  font-weight: 600;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
+}
+
+.ear-hint.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  animation: earSway 2.8s ease-in-out 0.6s infinite;
+}
+
+@keyframes earSway {
+  0%,
+  100% {
+    transform: translateX(-50%) rotate(-2.2deg);
+  }
+  50% {
+    transform: translateX(-50%) rotate(2.2deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ear-hint.show {
+    animation: none;
+  }
+}
+
+.content {
+  position: fixed;
+  top: var(--msgY, 30%);
+  left: 0;
+  width: 100%;
+  transform: translateY(-50%);
+  text-align: center;
+  z-index: 6;
+}
+
+.content__line {
+  font-family: "Shantell Sans", cursive;
+  font-weight: 700;
+  font-size: var(--msgFs, clamp(2rem, 8vw, 4rem));
+  line-height: 1.15;
+  text-wrap: balance;
+  color: #3d3226;
+  text-shadow: 0 1px 0 rgba(255, 250, 240, 0.4);
+  opacity: 0;
+  padding: 0 1.4rem;
+}
+
+@keyframes hintFade {
+  0%,
+  100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hint,
+  .replay.show {
+    animation: none;
+  }
+}
