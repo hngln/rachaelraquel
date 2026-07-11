@@ -896,7 +896,8 @@ body {
 
 .komi-panel {
   top: 2rem;
-  left: 50%;
+  /* the head sits 1rem right in the komi box; match it so the body lines up */
+  left: calc(50% + 1rem);
   width: clamp(20rem, 50vw, 30rem);
   height: 15rem;
   transform: translateX(-50%);
@@ -1093,6 +1094,7 @@ body {
   position: fixed;
   left: 50%;
   bottom: calc(2.2% + env(safe-area-inset-bottom, 0px));
+  width: max-content;
   transform: translateX(-50%) rotate(-4deg);
   z-index: 8;
   font-family: "Caveat", cursive;
