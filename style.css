@@ -1716,6 +1716,12 @@ img {
   transition: opacity 0.4s ease;
 }
 
+/* fade the hint back in on replay; the pulse resumes at full opacity after */
+.hint.appearing {
+  animation: none;
+  transition: opacity 0.5s ease;
+}
+
 .replay {
   position: fixed;
   top: var(--hintY, 72%);
@@ -1740,10 +1746,7 @@ img {
 .replay.show {
   opacity: 1;
   pointer-events: auto;
-  /* fade in to the pulse's low point, then pulse like the candle hint */
-  animation:
-    replayIn 0.5s ease,
-    hintFade 2.6s ease-in-out 0.5s infinite;
+  animation: replayIn 0.5s ease;
 }
 
 @keyframes replayIn {
@@ -1751,7 +1754,7 @@ img {
     opacity: 0;
   }
   to {
-    opacity: 0.6;
+    opacity: 1;
   }
 }
 .replay:hover {
@@ -1829,10 +1832,10 @@ img {
 @keyframes hintFade {
   0%,
   100% {
-    opacity: 0.6;
+    opacity: 1;
   }
   50% {
-    opacity: 1;
+    opacity: 0.6;
   }
 }
 
