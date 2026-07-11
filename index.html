@@ -1067,8 +1067,18 @@
       });
       hint.classList.remove("steady");
       hint.textContent = "tap the candle to light it";
-      // 500ms matches the replay fade-out in style.css so the two never overlap
-      setTimeout(() => hint.classList.remove("hide"), 500);
+      // wait 500ms for the replay button to finish fading out, then fade the hint
+      // in. .appearing suppresses the pulse so opacity can transition instead of
+      // popping. The pulse resumes at full opacity once the fade-in ends.
+      hint.classList.add("appearing");
+      setTimeout(() => {
+        hint.classList.remove("hide");
+        hint.addEventListener(
+          "transitionend",
+          () => hint.classList.remove("appearing"),
+          { once: true },
+        );
+      }, 500);
       if (replayCall) {
         replayCall.kill();
         replayCall = null;
