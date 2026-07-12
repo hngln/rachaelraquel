@@ -6,7 +6,7 @@
     <meta property="og:title" content="built for rachael michael" />
     <meta
       property="og:description"
-      content="a little something for your birthday. tap in."
+      content="a little something for your birthday"
     />
     <meta property="og:type" content="website" />
     <link
@@ -331,7 +331,11 @@
         const pillTop = pill.getBoundingClientRect().top;
         root.setProperty("--msgY", ((top + pillTop) / 2).toFixed(0) + "px");
         // cap the font so even a three-line message stays inside the band
-        const fs = Math.min(window.innerWidth * 0.08, (pillTop - top) / 3.6, 64);
+        const fs = Math.min(
+          window.innerWidth * 0.08,
+          (pillTop - top) / 3.6,
+          64,
+        );
         root.setProperty("--msgFs", fs.toFixed(1) + "px");
       }
     }
@@ -548,7 +552,7 @@
       "may you remember the good food you ate",
       "may every cat let you pat them",
       "go do everything you keep saying",
-      "you take care of poeple in ways they don't even notice hope this is the year it comes back to you",
+      "you take care of people in ways they don't even notice hope this is the year it comes back to you",
       "happy 22nd birthday rachael",
     ];
     const line = document.getElementById("content-line");
